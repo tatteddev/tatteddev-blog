@@ -12,38 +12,560 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main class="terminal-container">
+			<div class="terminal-window">
+				<div class="terminal-header">
+					<div class="terminal-controls">
+						<span class="control close"></span>
+						<span class="control minimize"></span>
+						<span class="control maximize"></span>
+					</div>
+					<div class="terminal-title">terminal@tatteddev:~</div>
+				</div>
+				<div class="terminal-body">
+					<div class="terminal-line">
+						<span class="prompt">root@tatteddev:~$</span> 
+						<span class="command typing-animation">whoami</span>
+					</div>
+					<div class="output">
+						<div class="neon-sign">
+							<div class="neon-line top"></div>
+							<div class="sign-text">
+								<span class="text-blue">T</span><span class="text-pink">A</span><span class="text-blue">TTED</span><span class="text-pink">DEV</span>
+							</div>
+							<div class="neon-line bottom"></div>
+						</div>
+					</div>
+					
+					<div class="terminal-line">
+						<span class="prompt">root@tatteddev:~$</span> 
+						<span class="command">cat about.txt</span>
+					</div>
+					<div class="output about-section">
+						<p class="neon-text">SYSTEM_STATUS: <span class="status-active">ONLINE</span></p>
+						<p class="neon-text">USER_TYPE: <span class="highlight">Full-Stack Developer | Digital Creator</span></p>
+						<p class="neon-text">LOCATION: <span class="highlight">192.168.1.337</span></p>
+						<p class="neon-text">CURRENT_PROJECT: <span class="highlight">HoneyHub | Building tools for creators</span></p>
+						
+						<br />
+						<div class="about-content">
+							<h2 class="neon-glow-pink">[~] About Me</h2>
+							<p>This blog is a digital lab where I explore the things I'm most obsessed with.</p>
+							<p>Expect posts that dive deep into:</p>
+							<br />
+							<ul class="terminal-list">
+								<li><span class="symbol neon-blue">[*]</span> <strong>Software Engineering</strong> — .NET, SQL, Azure, pipelines, and building scalable systems.</li>
+								<li><span class="symbol accent-lime">[+]</span> <strong>Game Development</strong> — Unity, indie dev grind, and interactive experiences.</li>
+								<li><span class="symbol neon-pink">[#]</span> <strong>3D & Digital Art</strong> — Blender experiments, design workflows, and creative tools.</li>
+								<li><span class="symbol accent-purple">[>]</span> <strong>Robotics & Hardware</strong> — tinkering with Arduino, Raspberry Pi, and 3D printing.</li>
+								<li><span class="symbol warning">[!]</span> <strong>Security & Hacking</strong> — ethical hacking, penetration testing, cryptography, and red team tactics.</li>
+								<li><span class="symbol neon-blue">[?]</span> <strong>AI & Machine Learning</strong> — practical experiments with LLMs and dev productivity.</li>
+								<li><span class="symbol accent-lime">[^]</span> <strong>Cloud & Infrastructure</strong> — automation, observability, and the future of DevOps.</li>
+								<li><span class="symbol neon-pink">[@]</span> <strong>Knowledge Systems</strong> — better docs, sprints, and ways to organize complexity.</li>
+								<li><span class="symbol accent-purple">[$]</span> <strong>Indie Entrepreneurship</strong> — building HoneyHub and tools for creators.</li>
+								<li><span class="symbol warning">[~]</span> <strong>Lifestyle & Growth</strong> — personal productivity, fitness, and balancing tech with life.</li>
+							</ul>
+							<br />
+							<p>It's equal parts <strong>notebook</strong>, <strong>lab</strong>, and <strong>public build log</strong> — a place to capture what I'm learning, ship experiments, and share tools that help along the way.</p>
+						</div>
+					</div>
+					
+					<div class="terminal-line">
+						<span class="prompt">root@tatteddev:~$</span> 
+						<span class="command">ls -la blog/</span>
+					</div>
+					<div class="output">
+						<p class="directory-listing">drwxr-xr-x 2 root root 4096 Sep 21 2025 <a href="/blog" class="file-link">./recent_posts/</a></p>
+						<p class="directory-listing">drwxr-xr-x 2 root root 4096 Sep 21 2025 <a href="/about" class="file-link">../about_me/</a></p>
+					</div>
+					
+					<div class="terminal-line">
+						<span class="prompt">root@tatteddev:~$</span> 
+						<span class="command cursor-blink">_</span>
+					</div>
+				</div>
+			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.terminal-container {
+		padding: 2rem 1rem;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		min-height: 80vh;
+	}
+	
+	.terminal-window {
+		background: var(--bg-dark);
+		border: 2px solid var(--neon-blue);
+		border-radius: 8px;
+		box-shadow: 
+			0 0 20px rgba(0, 246, 255, 0.3),
+			inset 0 0 20px rgba(0, 246, 255, 0.05);
+		width: 100%;
+		max-width: 900px;
+		font-family: 'Courier New', monospace;
+		font-size: 14px;
+		line-height: 1.4;
+	}
+	
+	.terminal-header {
+		background: var(--surface);
+		padding: 0.5rem 1rem;
+		border-bottom: 1px solid var(--neon-blue);
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		border-radius: 6px 6px 0 0;
+	}
+	
+	.terminal-controls {
+		display: flex;
+		gap: 0.5rem;
+	}
+	
+	.control {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+	
+	.control.close {
+		background: #ff5f56;
+		box-shadow: 0 0 8px rgba(255, 95, 86, 0.5);
+	}
+	
+	.control.minimize {
+		background: #ffbd2e;
+		box-shadow: 0 0 8px rgba(255, 189, 46, 0.5);
+	}
+	
+	.control.maximize {
+		background: #27ca3f;
+		box-shadow: 0 0 8px rgba(39, 202, 63, 0.5);
+	}
+	
+	.terminal-title {
+		color: var(--neutral-light);
+		font-weight: bold;
+		font-size: 12px;
+	}
+	
+	.terminal-body {
+		padding: 1.5rem;
+		color: var(--neutral-light);
+	}
+	
+	.terminal-line {
+		margin-bottom: 0.5rem;
+	}
+	
+	.prompt {
+		color: var(--neon-blue);
+		text-shadow: 0 0 5px var(--neon-blue);
+		font-weight: bold;
+	}
+	
+	.command {
+		color: var(--accent-lime);
+		margin-left: 0.5rem;
+	}
+	
+	.output {
+		margin: 0.5rem 0 1.5rem 0;
+		padding-left: 1rem;
+		border-left: 2px solid rgba(0, 246, 255, 0.2);
+	}
+	
+	.ascii-art {
+		color: var(--neon-pink);
+		text-shadow: 0 0 10px var(--neon-pink);
+		font-size: 8px;
+		line-height: 1;
+		margin: 1rem 0;
+		overflow-x: auto;
+	}
+	
+	.neon-sign {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 2rem 0;
+		padding: 1.5rem;
+	}
+	
+	.neon-line {
+		width: 100%;
+		max-width: 400px;
+		height: 3px;
+		background: linear-gradient(90deg, 
+			transparent 0%, 
+			var(--neon-pink) 10%, 
+			var(--neon-pink) 90%, 
+			transparent 100%
+		);
+		box-shadow: 
+			0 0 4px var(--neon-pink),
+			0 0 8px var(--neon-pink),
+			0 0 12px var(--neon-pink);
+		border-radius: 2px;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.neon-line::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, 
+			transparent 0%, 
+			rgba(255, 255, 255, 0.4) 50%, 
+			transparent 100%
+		);
+		animation: neon-sweep 3s infinite;
+	}
+	
+	.neon-line.top {
+		margin-bottom: 1rem;
+		animation: neon-flicker 4s infinite;
+	}
+	
+	.neon-line.bottom {
+		margin-top: 1rem;
+		animation: neon-flicker 5s infinite;
+	}
+	
+	@keyframes neon-sweep {
+		0% {
+			left: -100%;
+		}
+		100% {
+			left: 100%;
+		}
+	}
+	
+	.sign-text {
+		font-family: 'Arial', sans-serif;
+		font-size: 3rem;
+		font-weight: bold;
+		letter-spacing: 0.3rem;
+		text-transform: uppercase;
+		margin: 0;
+		text-align: center;
+	}
+	
+	.text-blue {
+		color: var(--neon-blue);
+		text-shadow: 
+			0 0 2px var(--neon-blue),
+			0 0 4px var(--neon-blue),
+			0 0 8px var(--neon-blue),
+			0 0 12px var(--neon-blue),
+			0 0 16px var(--neon-blue);
+		animation: blue-neon-glow 2s ease-in-out infinite alternate;
+		position: relative;
+	}
+	
+	.text-blue::before {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: rgba(0, 246, 255, 0.1);
+		text-shadow: none;
+		z-index: -1;
+		transform: scale(1.02);
+	}
+	
+	.text-pink {
+		color: var(--neon-pink);
+		text-shadow: 
+			0 0 2px var(--neon-pink),
+			0 0 4px var(--neon-pink),
+			0 0 8px var(--neon-pink),
+			0 0 12px var(--neon-pink),
+			0 0 16px var(--neon-pink);
+		animation: pink-neon-glow 2.5s ease-in-out infinite alternate;
+		position: relative;
+	}
+	
+	.text-pink::before {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: rgba(255, 0, 212, 0.1);
+		text-shadow: none;
+		z-index: -1;
+		transform: scale(1.02);
+	}
+	
+	@keyframes neon-flicker {
+		0%, 100% {
+			opacity: 1;
+			box-shadow: 
+				0 0 4px var(--neon-pink),
+				0 0 8px var(--neon-pink),
+				0 0 12px var(--neon-pink);
+		}
+		95% {
+			opacity: 1;
+			box-shadow: 
+				0 0 4px var(--neon-pink),
+				0 0 8px var(--neon-pink),
+				0 0 12px var(--neon-pink);
+		}
+		96% {
+			opacity: 0.8;
+			box-shadow: 
+				0 0 2px var(--neon-pink),
+				0 0 4px var(--neon-pink);
+		}
+		97% {
+			opacity: 1;
+			box-shadow: 
+				0 0 4px var(--neon-pink),
+				0 0 8px var(--neon-pink),
+				0 0 12px var(--neon-pink);
+		}
+		98% {
+			opacity: 0.9;
+		}
+		99% {
+			opacity: 1;
+		}
+	}
+	
+	@keyframes blue-neon-glow {
+		0% {
+			text-shadow: 
+				0 0 2px var(--neon-blue),
+				0 0 4px var(--neon-blue),
+				0 0 8px var(--neon-blue),
+				0 0 12px var(--neon-blue),
+				0 0 16px var(--neon-blue);
+			filter: brightness(1);
+		}
+		25% {
+			text-shadow: 
+				0 0 1px var(--neon-blue),
+				0 0 2px var(--neon-blue),
+				0 0 4px var(--neon-blue),
+				0 0 8px var(--neon-blue),
+				0 0 12px var(--neon-blue);
+			filter: brightness(0.9);
+		}
+		50% {
+			text-shadow: 
+				0 0 2px var(--neon-blue),
+				0 0 4px var(--neon-blue),
+				0 0 8px var(--neon-blue),
+				0 0 12px var(--neon-blue),
+				0 0 20px var(--neon-blue);
+			filter: brightness(1.1);
+		}
+		75% {
+			text-shadow: 
+				0 0 1px var(--neon-blue),
+				0 0 3px var(--neon-blue),
+				0 0 6px var(--neon-blue),
+				0 0 10px var(--neon-blue),
+				0 0 14px var(--neon-blue);
+			filter: brightness(0.95);
+		}
+		100% {
+			text-shadow: 
+				0 0 3px var(--neon-blue),
+				0 0 6px var(--neon-blue),
+				0 0 10px var(--neon-blue),
+				0 0 15px var(--neon-blue),
+				0 0 20px var(--neon-blue);
+			filter: brightness(1.2);
+		}
+	}
+	
+	@keyframes pink-neon-glow {
+		0% {
+			text-shadow: 
+				0 0 2px var(--neon-pink),
+				0 0 4px var(--neon-pink),
+				0 0 8px var(--neon-pink),
+				0 0 12px var(--neon-pink),
+				0 0 16px var(--neon-pink);
+			filter: brightness(1);
+		}
+		20% {
+			text-shadow: 
+				0 0 1px var(--neon-pink),
+				0 0 2px var(--neon-pink),
+				0 0 4px var(--neon-pink),
+				0 0 8px var(--neon-pink),
+				0 0 12px var(--neon-pink);
+			filter: brightness(0.85);
+		}
+		40% {
+			text-shadow: 
+				0 0 3px var(--neon-pink),
+				0 0 6px var(--neon-pink),
+				0 0 10px var(--neon-pink),
+				0 0 15px var(--neon-pink),
+				0 0 22px var(--neon-pink);
+			filter: brightness(1.15);
+		}
+		60% {
+			text-shadow: 
+				0 0 1px var(--neon-pink),
+				0 0 3px var(--neon-pink),
+				0 0 6px var(--neon-pink),
+				0 0 10px var(--neon-pink),
+				0 0 14px var(--neon-pink);
+			filter: brightness(0.9);
+		}
+		80% {
+			text-shadow: 
+				0 0 2px var(--neon-pink),
+				0 0 5px var(--neon-pink),
+				0 0 9px var(--neon-pink),
+				0 0 14px var(--neon-pink),
+				0 0 18px var(--neon-pink);
+			filter: brightness(1.05);
+		}
+		100% {
+			text-shadow: 
+				0 0 4px var(--neon-pink),
+				0 0 8px var(--neon-pink),
+				0 0 12px var(--neon-pink),
+				0 0 18px var(--neon-pink),
+				0 0 24px var(--neon-pink);
+			filter: brightness(1.3);
+		}
+	}
+	
+	.neon-text {
+		color: var(--neutral-light);
+		margin: 0.25rem 0;
+	}
+	
+	.status-active {
+		color: var(--accent-lime);
+		text-shadow: 0 0 5px var(--accent-lime);
+		font-weight: bold;
+	}
+	
+	.highlight {
+		color: var(--neon-blue);
+		text-shadow: 0 0 5px var(--neon-blue);
+	}
+	
+	.terminal-list {
+		list-style: none;
+		padding: 0;
+		margin: 1rem 0;
+	}
+	
+	.terminal-list li {
+		margin: 0.5rem 0;
+		color: var(--neutral-light);
+	}
+	
+	.symbol {
+		font-weight: bold;
+		margin-right: 0.5rem;
+		text-shadow: 0 0 5px currentColor;
+	}
+	
+	.symbol.neon-blue { color: var(--neon-blue); }
+	.symbol.accent-lime { color: var(--accent-lime); }
+	.symbol.neon-pink { color: var(--neon-pink); }
+	.symbol.accent-purple { color: var(--accent-purple); }
+	.symbol.warning { color: var(--warning); }
+	
+	.directory-listing {
+		font-family: 'Courier New', monospace;
+		color: var(--neutral-mid);
+		margin: 0.25rem 0;
+	}
+	
+	.file-link {
+		color: var(--neon-blue);
+		text-decoration: none;
+		transition: all 0.3s ease;
+	}
+	
+	.file-link:hover {
+		color: var(--neon-pink);
+		text-shadow: 0 0 8px currentColor;
+	}
+	
+	.cursor-blink {
+		animation: blink 1s infinite;
+	}
+	
+	.typing-animation {
+		overflow: hidden;
+		border-right: 2px solid var(--accent-lime);
+		white-space: nowrap;
+		animation: typing 2s steps(6, end), blink-caret 1s step-end infinite;
+	}
+	
+	@keyframes blink {
+		0%, 50% { opacity: 1; }
+		51%, 100% { opacity: 0; }
+	}
+	
+	@keyframes typing {
+		from { width: 0; }
+		to { width: 6ch; }
+	}
+	
+	@keyframes blink-caret {
+		from, to { border-color: transparent; }
+		50% { border-color: var(--accent-lime); }
+	}
+	
+	.about-section p {
+		margin: 0.5rem 0;
+	}
+	
+	.about-content h2 {
+		font-size: 1.5em;
+		margin: 1rem 0 0.5rem 0;
+		text-shadow: 0 0 15px currentColor;
+	}
+	
+	.about-content strong {
+		color: var(--neon-blue);
+		text-shadow: 0 0 5px var(--neon-blue);
+	}
+	
+	@media (max-width: 768px) {
+		.terminal-container {
+			padding: 1rem 0.5rem;
+		}
+		
+		.terminal-window {
+			font-size: 12px;
+		}
+		
+		.sign-text {
+			font-size: 2rem;
+			letter-spacing: 0.2rem;
+		}
+		
+		.neon-line {
+			max-width: 280px;
+		}
+		
+		.terminal-body {
+			padding: 1rem;
+		}
+	}
+</style>
