@@ -51,40 +51,52 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						</div>
 					</div>
 					
-					<!-- Command 2: system status -->
+					<!-- Command 2: network scan -->
 					<div class="terminal-line" id="cmd-2" style="display: none;">
 						<span class="prompt">root@tatteddev:~$</span> 
-						<span class="command" id="status-cmd"></span>
+						<span class="command" id="nmap-cmd"></span>
 						<span class="cursor" id="cursor-2">_</span>
 					</div>
-					<div class="output system-section" id="output-2" style="display: none;">
-						<p class="neon-text">SYSTEM_STATUS: <span class="status-active">ONLINE</span></p>
-						<p class="neon-text">USER_TYPE: <span class="highlight">Full-Stack Developer | Digital Creator</span></p>
-						<p class="neon-text">LOCATION: <span class="highlight">192.168.1.337</span></p>
-						<p class="neon-text">CURRENT_PROJECT: <span class="highlight">HoneyHub | Building tools for creators</span></p>
+					<div class="output matrix-section" id="output-2" style="display: none;">
+						<p class="scan-text">Initializing neural interface...</p>
+						<p class="scan-text">Connecting to local skillset repository...</p>
+						<p class="scan-text"><span class="accent-lime">Connection established.</span></p>
+						<br />
+						<p class="scan-text">Uploading tatteddev_skills.pkg...</p>
+						<div class="progress-bar">
+							<div class="progress-fill"></div>
+						</div>
+						<p class="scan-text">█████████████████████ 100% Complete</p>
+						<br />
+						<p class="scan-text"><span class="accent-lime">Upload successful.</span></p>
+						<p class="scan-text">Installing full-stack frameworks...</p>
+						<p class="scan-text">Installing security protocols...</p>
+						<p class="scan-text">Installing creative utilities...</p>
+						<br />
+						<p class="matrix-quote"><span class="neon-pink">"I know kung fu."</span></p>
 					</div>
-					
+
 					<!-- Command 3: cat about.txt -->
-					<div class="terminal-line" id="cmd-3" style="display: none;">
-						<span class="prompt">root@tatteddev:~$</span> 
+					<div class="terminal-line" id="cmd-7" style="display: none;">
+						<span class="prompt">tatteddev@remote:~$</span> 
 						<span class="command" id="cat-cmd"></span>
-						<span class="cursor" id="cursor-3">_</span>
+						<span class="cursor" id="cursor-7">_</span>
 					</div>
-					<div class="output about-section" id="output-3" style="display: none;">
+					<div class="output about-section" id="output-7" style="display: none;">
 						<div class="about-content">
 							<h2 class="neon-glow-pink">[~] About Me</h2>
 							<p>This blog is a digital lab where I explore the things I'm most obsessed with.</p>
 							<p>It's equal parts <strong>notebook</strong>, <strong>lab</strong>, and <strong>public build log</strong> — a place to capture what I'm learning, ship experiments, and share tools that help along the way.</p>
 						</div>
 					</div>
-					
-					<!-- Command 4: cat interests.txt -->
-					<div class="terminal-line" id="cmd-4" style="display: none;">
-						<span class="prompt">root@tatteddev:~$</span> 
+
+					<!-- Command 8: cat interests.txt -->
+					<div class="terminal-line" id="cmd-8" style="display: none;">
+						<span class="prompt">tatteddev@remote:~$</span> 
 						<span class="command" id="interests-cmd"></span>
-						<span class="cursor" id="cursor-4">_</span>
+						<span class="cursor" id="cursor-8">_</span>
 					</div>
-					<div class="output interests-section" id="output-4" style="display: none;">
+					<div class="output interests-section" id="output-8" style="display: none;">
 						<div class="about-content">
 							<h2 class="neon-glow-blue">[#] Core Interests & Expertise</h2>
 							<p>Expect posts that dive deep into:</p>
@@ -104,13 +116,13 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						</div>
 					</div>
 					
-					<!-- Command 5: recent posts -->
-					<div class="terminal-line" id="cmd-5" style="display: none;">
-						<span class="prompt">root@tatteddev:~$</span> 
+					<!-- Command 9: recent posts -->
+					<div class="terminal-line" id="cmd-9" style="display: none;">
+						<span class="prompt">tatteddev@remote:~$</span> 
 						<span class="command" id="recent-cmd"></span>
-						<span class="cursor" id="cursor-5">_</span>
+						<span class="cursor" id="cursor-9">_</span>
 					</div>
-					<div class="output" id="output-5" style="display: none;">
+					<div class="output" id="output-9" style="display: none;">
 						<p class="directory-listing">./blog/<a href="/blog/using-mdx" class="file-link">using-mdx.mdx</a></p>
 						<p class="directory-listing">./blog/<a href="/blog/third-post" class="file-link">third-post.md</a></p>
 						<p class="directory-listing">./blog/<a href="/blog/second-post" class="file-link">second-post.md</a></p>
@@ -119,10 +131,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<br />
 						<p class="neon-text">→ <a href="/blog" class="file-link">View all posts in ./blog/</a></p>
 					</div>
-					
+
 					<!-- Final prompt -->
 					<div class="terminal-line" id="final-prompt" style="display: none;">
-						<span class="prompt">root@tatteddev:~$</span> 
+						<span class="prompt">tatteddev@remote:~$</span> 
 						<span class="cursor cursor-blink">_</span>
 					</div>
 				</div>
@@ -134,11 +146,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			// Terminal animation sequence
 			let currentStep = 0;
 			const commands = [
-				{ element: 'whoami-cmd', text: 'whoami', delay: 1500 },
-				{ element: 'status-cmd', text: 'systemctl status tatteddev', delay: 1800 },
-				{ element: 'cat-cmd', text: 'cat about.txt', delay: 2000 },
-				{ element: 'interests-cmd', text: 'cat interests.txt', delay: 2200 },
-				{ element: 'recent-cmd', text: 'ls -lt blog/*.md | head -5', delay: 1800 }
+				{ element: 'whoami-cmd', text: 'whoami', delay: 1200 },
+				{ element: 'nmap-cmd', text: 'upload --neural tatteddev_skills.pkg', delay: 1800 },
+				{ element: 'cat-cmd', text: 'cat about.txt', delay: 1600 },
+				{ element: 'interests-cmd', text: 'cat interests.txt', delay: 1800 },
+				{ element: 'recent-cmd', text: 'find ./blog -name "*.md"', delay: 1400 }
 			];
 			
 			function typeText(elementId, text, speed = 100) {
@@ -197,49 +209,54 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			
 			async function startAnimation() {
 				// Initial loading sequence
-				await new Promise(resolve => setTimeout(resolve, 800));
-				await showElement('line-1', 600);
-				await showElement('line-2', 800);
+				await new Promise(resolve => setTimeout(resolve, 600));
+				await showElement('line-1', 400);
+				await showElement('line-2', 600);
 				
 				// Hide loading lines
 				setTimeout(() => {
 					hideElement('line-0');
 					hideElement('line-1');
 					hideElement('line-2');
-				}, 1200);
+				}, 800);
 				
 				// Command 1: whoami
-				await showElement('cmd-1', 1500);
-				await typeText('whoami-cmd', commands[0].text, 120);
+				await showElement('cmd-1', 1000);
+				await typeText('whoami-cmd', commands[0].text, 100);
 				hideCursor('cursor-1');
 				await showElement('output-1', 300);
+				scrollToBottom();
 				
-				// Command 2: system status
+				// Command 2: nmap scan
 				await showElement('cmd-2', commands[1].delay);
-				await typeText('status-cmd', commands[1].text, 80);
+				await typeText('nmap-cmd', commands[1].text, 80);
 				hideCursor('cursor-2');
-				await showElement('output-2', 400);
+				await showElement('output-2', 600);
+				scrollToBottom();
 				
 				// Command 3: cat about.txt
-				await showElement('cmd-3', commands[2].delay);
-				await typeText('cat-cmd', commands[2].text, 100);
-				hideCursor('cursor-3');
-				await showElement('output-3', 400);
+				await showElement('cmd-7', commands[2].delay);
+				await typeText('cat-cmd', commands[2].text, 90);
+				hideCursor('cursor-7');
+				await showElement('output-7', 400);
+				scrollToBottom();
 				
 				// Command 4: cat interests.txt
-				await showElement('cmd-4', commands[3].delay);
-				await typeText('interests-cmd', commands[3].text, 95);
-				hideCursor('cursor-4');
-				await showElement('output-4', 500);
+				await showElement('cmd-8', commands[3].delay);
+				await typeText('interests-cmd', commands[3].text, 85);
+				hideCursor('cursor-8');
+				await showElement('output-8', 500);
+				scrollToBottom();
 				
 				// Command 5: recent posts
-				await showElement('cmd-5', commands[4].delay);
+				await showElement('cmd-9', commands[4].delay);
 				await typeText('recent-cmd', commands[4].text, 70);
-				hideCursor('cursor-5');
-				await showElement('output-5', 600);
+				hideCursor('cursor-9');
+				await showElement('output-9', 400);
+				scrollToBottom();
 				
 				// Final prompt
-				await showElement('final-prompt', 1000);
+				await showElement('final-prompt', 800);
 			}
 			
 			// Start animation when page loads
@@ -661,6 +678,106 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		margin: 0.25rem 0;
 	}
 	
+	/* Hacker Terminal Styles */
+	.scan-section, .ssh-section, .process-section, .log-section, .matrix-section {
+		font-family: 'Courier New', monospace;
+		font-size: 0.9rem;
+		line-height: 1.4;
+	}
+	
+	/* Matrix Easter Egg Styles */
+	.progress-bar {
+		width: 100%;
+		height: 20px;
+		background: rgba(0, 255, 65, 0.1);
+		border: 1px solid var(--accent-lime);
+		border-radius: 2px;
+		margin: 0.5rem 0;
+		overflow: hidden;
+		position: relative;
+	}
+	
+	.progress-fill {
+		height: 100%;
+		background: linear-gradient(90deg, var(--accent-lime), var(--neon-blue));
+		width: 0%;
+		animation: matrix-upload 3s ease-in-out forwards;
+		animation-delay: 1s;
+		box-shadow: 0 0 10px var(--accent-lime);
+	}
+	
+	@keyframes matrix-upload {
+		0% { width: 0%; }
+		20% { width: 15%; }
+		40% { width: 45%; }
+		60% { width: 70%; }
+		80% { width: 90%; }
+		100% { width: 100%; }
+	}
+	
+	.matrix-quote {
+		font-size: 1.1rem;
+		font-weight: bold;
+		text-align: center;
+		margin: 1rem 0;
+		text-shadow: 0 0 10px var(--neon-pink);
+		animation: matrix-glow 2s ease-in-out infinite alternate;
+	}
+	
+	@keyframes matrix-glow {
+		0% { text-shadow: 0 0 10px var(--neon-pink); }
+		100% { text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink); }
+	}
+	
+	.scan-text {
+		color: var(--neutral-light);
+		margin: 0.2rem 0;
+		font-family: 'Courier New', monospace;
+	}
+	
+	.hidden-text {
+		color: var(--accent-lime);
+		background: var(--accent-lime);
+		border-radius: 2px;
+	}
+	
+	.scan-section .accent-lime {
+		color: var(--accent-lime);
+		font-weight: bold;
+	}
+	
+	.scan-section .warning {
+		color: var(--warning);
+		font-weight: bold;
+		text-shadow: 0 0 5px var(--warning);
+	}
+	
+	.ssh-section .status-active {
+		color: var(--accent-lime);
+		font-weight: bold;
+		text-shadow: 0 0 5px var(--accent-lime);
+	}
+	
+	.process-section .neon-blue {
+		color: var(--neon-blue);
+		font-weight: bold;
+	}
+	
+	.process-section .neon-pink {
+		color: var(--neon-pink);
+		font-weight: bold;
+	}
+	
+	.process-section .accent-purple {
+		color: var(--accent-purple);
+		font-weight: bold;
+	}
+	
+	.log-section .scan-text {
+		font-size: 0.85rem;
+		margin: 0.15rem 0;
+	}
+
 	.file-link {
 		color: var(--neon-blue);
 		text-decoration: none;
