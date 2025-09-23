@@ -374,10 +374,29 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				setInterval(updateSystemMonitors, 2000 + Math.random() * 3000); // Random 2-5 second updates
 			}
 
+			// Random terminal glitch effect
+			function triggerRandomGlitch() {
+				const terminal = document.querySelector('.terminal-window');
+				if (terminal) {
+					// Add temporary glitch class
+					terminal.classList.add('glitch-active');
+					
+					// Remove after short duration
+					setTimeout(() => {
+						terminal.classList.remove('glitch-active');
+					}, 300);
+				}
+				
+				// Schedule next random glitch (between 15-45 seconds)
+				const nextGlitch = 15000 + Math.random() * 30000;
+				setTimeout(triggerRandomGlitch, nextGlitch);
+			}
+
 			// Start animation when page loads
 			window.addEventListener('load', () => {
 				setTimeout(startAnimation, 500);
 				setTimeout(startSystemMonitoring, 1000);
+				setTimeout(triggerRandomGlitch, 10000); // First glitch after 10 seconds
 			});
 			
 			// Make scrollToBottom available globally
@@ -655,6 +674,76 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		position: relative;
 		z-index: 1;
 		animation: terminal-breathing 4s ease-in-out infinite;
+		overflow: hidden;
+	}
+
+	/* Terminal glitch overlay */
+	.terminal-window::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: 
+			linear-gradient(90deg, transparent 0%, transparent 98%, rgba(0, 255, 0, 0.03) 100%),
+			linear-gradient(0deg, transparent 0%, rgba(0, 255, 255, 0.02) 50%, transparent 100%);
+		pointer-events: none;
+		z-index: 10;
+		opacity: 0;
+		animation: terminal-glitch 8s infinite;
+	}
+
+	/* Random glitch lines */
+	.terminal-window::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: 
+			linear-gradient(90deg, transparent 0%, rgba(0, 246, 255, 0.1) 50%, transparent 100%);
+		background-size: 100% 2px;
+		background-repeat: repeat-y;
+		pointer-events: none;
+		z-index: 11;
+		opacity: 0;
+		animation: glitch-lines 12s infinite;
+		transform: translateX(-100%);
+	}
+
+	/* Active glitch state */
+	.terminal-window.glitch-active {
+		animation: terminal-breathing 4s ease-in-out infinite, glitch-shake 0.1s infinite;
+	}
+
+	.terminal-window.glitch-active::before {
+		animation: terminal-glitch 0.3s infinite, rapid-flicker 0.05s infinite;
+	}
+
+	.terminal-window.glitch-active::after {
+		animation: glitch-lines 0.2s infinite, horizontal-shift 0.08s infinite;
+	}
+
+	@keyframes glitch-shake {
+		0%, 100% { transform: translate(0px, 0px); }
+		25% { transform: translate(-1px, 1px); }
+		50% { transform: translate(1px, -1px); }
+		75% { transform: translate(-1px, -1px); }
+	}
+
+	@keyframes rapid-flicker {
+		0%, 100% { opacity: 0.8; }
+		50% { opacity: 0.2; }
+	}
+
+	@keyframes horizontal-shift {
+		0% { transform: translateX(-2px); }
+		25% { transform: translateX(2px); }
+		50% { transform: translateX(-1px); }
+		75% { transform: translateX(1px); }
+		100% { transform: translateX(0px); }
 	}
 	
 	/* Breathing terminal border animation */
@@ -689,6 +778,60 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				0 0 48px rgba(0, 246, 255, 0.12),
 				0 0 80px rgba(0, 246, 255, 0.05),
 				inset 0 0 24px rgba(0, 246, 255, 0.06);
+		}
+	}
+
+	/* Terminal glitch animations */
+	@keyframes terminal-glitch {
+		0%, 95% {
+			opacity: 0;
+		}
+		96% {
+			opacity: 0.8;
+			transform: translate(0px, 0px);
+		}
+		97% {
+			opacity: 1;
+			transform: translate(2px, -1px);
+		}
+		98% {
+			opacity: 0.9;
+			transform: translate(-1px, 1px);
+		}
+		99% {
+			opacity: 1;
+			transform: translate(1px, 0px);
+		}
+		100% {
+			opacity: 0;
+			transform: translate(0px, 0px);
+		}
+	}
+
+	@keyframes glitch-lines {
+		0%, 90% {
+			opacity: 0;
+			transform: translateX(-100%);
+		}
+		91% {
+			opacity: 0.3;
+			transform: translateX(-50%);
+		}
+		93% {
+			opacity: 0.8;
+			transform: translateX(20%);
+		}
+		95% {
+			opacity: 0.6;
+			transform: translateX(100%);
+		}
+		97% {
+			opacity: 0.9;
+			transform: translateX(-20%);
+		}
+		100% {
+			opacity: 0;
+			transform: translateX(-100%);
 		}
 	}
 	
