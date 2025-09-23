@@ -22,12 +22,25 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 					</div>
 					<div class="terminal-title">terminal@tatteddev:~</div>
 				</div>
-				<div class="terminal-body">
-					<div class="terminal-line">
-						<span class="prompt">root@tatteddev:~$</span> 
-						<span class="command typing-animation">whoami</span>
+				<div class="terminal-body" id="terminal-body">
+					<!-- Initial loading state -->
+					<div class="terminal-line" id="line-0">
+						<span class="loading-text">Initializing system...</span>
 					</div>
-					<div class="output">
+					<div class="terminal-line" id="line-1" style="display: none;">
+						<span class="loading-text">Loading user profile...</span>
+					</div>
+					<div class="terminal-line" id="line-2" style="display: none;">
+						<span class="loading-text">Ready.</span>
+					</div>
+					
+					<!-- Command 1: whoami -->
+					<div class="terminal-line" id="cmd-1" style="display: none;">
+						<span class="prompt">root@tatteddev:~$</span> 
+						<span class="command" id="whoami-cmd"></span>
+						<span class="cursor" id="cursor-1">_</span>
+					</div>
+					<div class="output" id="output-1" style="display: none;">
 						<div class="neon-sign">
 							<div class="neon-line top"></div>
 							<div class="sign-text">
@@ -37,20 +50,42 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						</div>
 					</div>
 					
-					<div class="terminal-line">
+					<!-- Command 2: system status -->
+					<div class="terminal-line" id="cmd-2" style="display: none;">
 						<span class="prompt">root@tatteddev:~$</span> 
-						<span class="command">cat about.txt</span>
+						<span class="command" id="status-cmd"></span>
+						<span class="cursor" id="cursor-2">_</span>
 					</div>
-					<div class="output about-section">
+					<div class="output system-section" id="output-2" style="display: none;">
 						<p class="neon-text">SYSTEM_STATUS: <span class="status-active">ONLINE</span></p>
 						<p class="neon-text">USER_TYPE: <span class="highlight">Full-Stack Developer | Digital Creator</span></p>
 						<p class="neon-text">LOCATION: <span class="highlight">192.168.1.337</span></p>
 						<p class="neon-text">CURRENT_PROJECT: <span class="highlight">HoneyHub | Building tools for creators</span></p>
-						
-						<br />
+					</div>
+					
+					<!-- Command 3: cat about.txt -->
+					<div class="terminal-line" id="cmd-3" style="display: none;">
+						<span class="prompt">root@tatteddev:~$</span> 
+						<span class="command" id="cat-cmd"></span>
+						<span class="cursor" id="cursor-3">_</span>
+					</div>
+					<div class="output about-section" id="output-3" style="display: none;">
 						<div class="about-content">
 							<h2 class="neon-glow-pink">[~] About Me</h2>
 							<p>This blog is a digital lab where I explore the things I'm most obsessed with.</p>
+							<p>It's equal parts <strong>notebook</strong>, <strong>lab</strong>, and <strong>public build log</strong> — a place to capture what I'm learning, ship experiments, and share tools that help along the way.</p>
+						</div>
+					</div>
+					
+					<!-- Command 4: cat interests.txt -->
+					<div class="terminal-line" id="cmd-4" style="display: none;">
+						<span class="prompt">root@tatteddev:~$</span> 
+						<span class="command" id="interests-cmd"></span>
+						<span class="cursor" id="cursor-4">_</span>
+					</div>
+					<div class="output interests-section" id="output-4" style="display: none;">
+						<div class="about-content">
+							<h2 class="neon-glow-blue">[#] Core Interests & Expertise</h2>
 							<p>Expect posts that dive deep into:</p>
 							<br />
 							<ul class="terminal-list">
@@ -65,27 +100,155 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 								<li><span class="symbol accent-purple">[$]</span> <strong>Indie Entrepreneurship</strong> — building HoneyHub and tools for creators.</li>
 								<li><span class="symbol warning">[~]</span> <strong>Lifestyle & Growth</strong> — personal productivity, fitness, and balancing tech with life.</li>
 							</ul>
-							<br />
-							<p>It's equal parts <strong>notebook</strong>, <strong>lab</strong>, and <strong>public build log</strong> — a place to capture what I'm learning, ship experiments, and share tools that help along the way.</p>
 						</div>
 					</div>
 					
-					<div class="terminal-line">
+					<!-- Command 5: recent posts -->
+					<div class="terminal-line" id="cmd-5" style="display: none;">
 						<span class="prompt">root@tatteddev:~$</span> 
-						<span class="command">ls -la blog/</span>
+						<span class="command" id="recent-cmd"></span>
+						<span class="cursor" id="cursor-5">_</span>
 					</div>
-					<div class="output">
-						<p class="directory-listing">drwxr-xr-x 2 root root 4096 Sep 21 2025 <a href="/blog" class="file-link">./recent_posts/</a></p>
+					<div class="output" id="output-5" style="display: none;">
+						<p class="directory-listing">./blog/<a href="/blog/using-mdx" class="file-link">using-mdx.mdx</a></p>
+						<p class="directory-listing">./blog/<a href="/blog/third-post" class="file-link">third-post.md</a></p>
+						<p class="directory-listing">./blog/<a href="/blog/second-post" class="file-link">second-post.md</a></p>
+						<p class="directory-listing">./blog/<a href="/blog/first-post" class="file-link">first-post.md</a></p>
+						<p class="directory-listing">./blog/<a href="/blog/markdown-style-guide" class="file-link">markdown-style-guide.md</a></p>
+						<br />
+						<p class="neon-text">→ <a href="/blog" class="file-link">View all posts in ./blog/</a></p>
 					</div>
 					
-					<div class="terminal-line">
+					<!-- Final prompt -->
+					<div class="terminal-line" id="final-prompt" style="display: none;">
 						<span class="prompt">root@tatteddev:~$</span> 
-						<span class="command cursor-blink">_</span>
+						<span class="cursor cursor-blink">_</span>
 					</div>
 				</div>
 			</div>
 		</main>
 		<Footer />
+		
+		<script is:inline>
+			// Terminal animation sequence
+			let currentStep = 0;
+			const commands = [
+				{ element: 'whoami-cmd', text: 'whoami', delay: 1500 },
+				{ element: 'status-cmd', text: 'systemctl status tatteddev', delay: 1800 },
+				{ element: 'cat-cmd', text: 'cat about.txt', delay: 2000 },
+				{ element: 'interests-cmd', text: 'cat interests.txt', delay: 2200 },
+				{ element: 'recent-cmd', text: 'ls -lt blog/*.md | head -5', delay: 1800 }
+			];
+			
+			function typeText(elementId, text, speed = 100) {
+				return new Promise((resolve) => {
+					const element = document.getElementById(elementId);
+					if (!element) {
+						resolve();
+						return;
+					}
+					
+					let i = 0;
+					const typeInterval = setInterval(() => {
+						if (i < text.length) {
+							element.textContent += text.charAt(i);
+							i++;
+						} else {
+							clearInterval(typeInterval);
+							resolve();
+						}
+					}, speed);
+				});
+			}
+			
+			function showElement(elementId, delay = 0) {
+				return new Promise((resolve) => {
+					setTimeout(() => {
+						const element = document.getElementById(elementId);
+						if (element) {
+							element.style.display = 'block';
+						}
+						resolve();
+					}, delay);
+				});
+			}
+			
+			function hideElement(elementId) {
+				const element = document.getElementById(elementId);
+				if (element) {
+					element.style.display = 'none';
+				}
+			}
+			
+			function hideCursor(cursorId) {
+				const cursor = document.getElementById(cursorId);
+				if (cursor) {
+					cursor.style.display = 'none';
+				}
+			}
+			
+			function scrollToBottom() {
+				window.scrollTo({
+					top: document.body.scrollHeight,
+					behavior: 'smooth'
+				});
+			}
+			
+			async function startAnimation() {
+				// Initial loading sequence
+				await new Promise(resolve => setTimeout(resolve, 800));
+				await showElement('line-1', 600);
+				await showElement('line-2', 800);
+				
+				// Hide loading lines
+				setTimeout(() => {
+					hideElement('line-0');
+					hideElement('line-1');
+					hideElement('line-2');
+				}, 1200);
+				
+				// Command 1: whoami
+				await showElement('cmd-1', 1500);
+				await typeText('whoami-cmd', commands[0].text, 120);
+				hideCursor('cursor-1');
+				await showElement('output-1', 300);
+				
+				// Command 2: system status
+				await showElement('cmd-2', commands[1].delay);
+				await typeText('status-cmd', commands[1].text, 80);
+				hideCursor('cursor-2');
+				await showElement('output-2', 400);
+				
+				// Command 3: cat about.txt
+				await showElement('cmd-3', commands[2].delay);
+				await typeText('cat-cmd', commands[2].text, 100);
+				hideCursor('cursor-3');
+				await showElement('output-3', 400);
+				
+				// Command 4: cat interests.txt
+				await showElement('cmd-4', commands[3].delay);
+				await typeText('interests-cmd', commands[3].text, 95);
+				hideCursor('cursor-4');
+				await showElement('output-4', 500);
+				
+				// Command 5: recent posts
+				await showElement('cmd-5', commands[4].delay);
+				await typeText('recent-cmd', commands[4].text, 70);
+				hideCursor('cursor-5');
+				await showElement('output-5', 600);
+				
+				// Final prompt
+				await showElement('final-prompt', 1000);
+			}
+			
+			// Start animation when page loads
+			window.addEventListener('load', () => {
+				setTimeout(startAnimation, 500);
+			});
+			
+			// Make scrollToBottom available globally
+			window.scrollToBottom = scrollToBottom;
+		</script>
 	</body>
 </html>
 
@@ -508,6 +671,78 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		animation: blink 1s infinite;
 	}
 	
+	.cursor {
+		color: var(--accent-lime);
+		animation: blink 1s infinite;
+		font-weight: bold;
+	}
+	
+	.loading-text {
+		color: var(--neutral-mid);
+		animation: loading-dots 2s infinite;
+	}
+	
+	@keyframes loading-dots {
+		0%, 20% {
+			color: var(--neutral-mid);
+			transform: translateY(0);
+		}
+		40% {
+			color: var(--neon-blue);
+			transform: translateY(-1px);
+		}
+		60% {
+			color: var(--accent-lime);
+			transform: translateY(0);
+		}
+		80%, 100% {
+			color: var(--neutral-mid);
+			transform: translateY(0);
+		}
+	}
+	
+	/* Smooth fade-in for outputs */
+	.output {
+		opacity: 0;
+		animation: fade-in 0.5s ease-in forwards;
+	}
+	
+	@keyframes fade-in {
+		to {
+			opacity: 1;
+		}
+	}
+	
+	/* Enhanced typing effects */
+	.command {
+		color: var(--accent-lime);
+		margin-left: 0.5rem;
+		display: inline-block;
+	}
+	
+	/* Make the neon glow more prominent on interactive elements */
+	.file-link:hover {
+		color: var(--neon-pink);
+		text-shadow: 
+			0 0 5px currentColor,
+			0 0 10px currentColor,
+			0 0 15px currentColor;
+		transition: all 0.3s ease;
+	}
+	
+	/* Add a subtle glow effect to the about.txt click handler */
+	.file-link[onclick] {
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+	
+	.file-link[onclick]:hover {
+		color: var(--warning);
+		text-shadow: 
+			0 0 5px var(--warning),
+			0 0 10px var(--warning);
+	}
+	
 	.typing-animation {
 		overflow: hidden;
 		border-right: 2px solid var(--accent-lime);
@@ -534,10 +769,34 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		margin: 0.5rem 0;
 	}
 	
+	.system-section {
+		border-left: 2px solid rgba(0, 255, 127, 0.3);
+		padding-left: 1rem;
+	}
+	
+	.system-section p {
+		margin: 0.3rem 0;
+		font-family: 'Courier New', monospace;
+		font-size: 0.9em;
+	}
+	
+	.interests-section {
+		border-left: 2px solid rgba(0, 255, 127, 0.3);
+	}
+	
+	.interests-section .about-content h2 {
+		color: var(--neon-blue);
+	}
+	
 	.about-content h2 {
 		font-size: 1.5em;
 		margin: 1rem 0 0.5rem 0;
 		text-shadow: 0 0 15px currentColor;
+	}
+	
+	.neon-glow-blue {
+		color: var(--neon-blue);
+		text-shadow: 0 0 15px var(--neon-blue);
 	}
 	
 	.about-content strong {
