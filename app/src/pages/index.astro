@@ -73,22 +73,21 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<span class="cursor" id="cursor-2">_</span>
 					</div>
 					<div class="output matrix-section" id="output-2" style="display: none;">
-						<p class="scan-text">Initializing neural interface...</p>
-						<p class="scan-text">Connecting to local skillset repository...</p>
-						<p class="scan-text"><span class="accent-lime">Connection established.</span></p>
-						<br />
-						<p class="scan-text">Uploading tatteddev_skills.pkg...</p>
-						<div class="progress-bar">
+						<p class="scan-text" id="matrix-line-1" style="display: none;">Initializing neural interface...</p>
+						<p class="scan-text" id="matrix-line-2" style="display: none;">Connecting to local skillset repository...</p>
+						<p class="scan-text" id="matrix-line-3" style="display: none;"><span class="accent-lime">Connection established.</span></p>
+						<br id="matrix-break-1" style="display: none;" />
+						<p class="scan-text" id="matrix-line-4" style="display: none;">Uploading tatteddev_skills.pkg...</p>
+						<div class="progress-bar" id="matrix-progress" style="display: none;">
 							<div class="progress-fill"></div>
 						</div>
-						<p class="scan-text">█████████████████████ 100% Complete</p>
-						<br />
-						<p class="scan-text"><span class="accent-lime">Upload successful.</span></p>
-						<p class="scan-text">Installing full-stack frameworks...</p>
-						<p class="scan-text">Installing security protocols...</p>
-						<p class="scan-text">Installing creative utilities...</p>
-						<br />
-						<p class="matrix-quote"><span class="neon-pink">"I know kung fu."</span></p>
+						<br id="matrix-break-2" style="display: none;" />
+						<p class="scan-text" id="matrix-line-5" style="display: none;"><span class="accent-lime">Upload successful.</span></p>
+						<p class="scan-text" id="matrix-line-6" style="display: none;">Installing full-stack frameworks...</p>
+						<p class="scan-text" id="matrix-line-7" style="display: none;">Installing security protocols...</p>
+						<p class="scan-text" id="matrix-line-8" style="display: none;">Installing creative utilities...</p>
+						<br id="matrix-break-3" style="display: none;" />
+						<p class="matrix-quote" id="matrix-quote" style="display: none;"><span class="neon-pink">"I know kung fu."</span></p>
 					</div>
 
 					<!-- Command 3: cat about.txt -->
@@ -254,11 +253,39 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				await showElement('output-1', 300);
 				scrollToBottom();
 				
-				// Command 2: nmap scan
+				// Command 2: Matrix upload sequence
 				await showElement('cmd-2', commands[1].delay);
 				await typeText('nmap-cmd', commands[1].text, 80);
 				hideCursor('cursor-2');
-				await showElement('output-2', 600);
+				await showElement('output-2', 300);
+				
+				// Matrix line-by-line animation
+				await showElement('matrix-line-1', 800);
+				scrollToBottom();
+				await showElement('matrix-line-2', 600);
+				scrollToBottom();
+				await showElement('matrix-line-3', 500);
+				scrollToBottom();
+				await showElement('matrix-break-1', 400);
+				await showElement('matrix-line-4', 600);
+				scrollToBottom();
+				await showElement('matrix-progress', 500);
+				scrollToBottom();
+				
+				// Wait for progress bar animation to complete
+				await new Promise(resolve => setTimeout(resolve, 3000));
+				
+				await showElement('matrix-break-2', 200);
+				await showElement('matrix-line-5', 500);
+				scrollToBottom();
+				await showElement('matrix-line-6', 600);
+				scrollToBottom();
+				await showElement('matrix-line-7', 500);
+				scrollToBottom();
+				await showElement('matrix-line-8', 600);
+				scrollToBottom();
+				await showElement('matrix-break-3', 400);
+				await showElement('matrix-quote', 800);
 				scrollToBottom();
 				
 				// Command 3: cat about.txt
