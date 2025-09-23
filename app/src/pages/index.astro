@@ -13,6 +13,21 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		
+		<!-- Binary Rain Background -->
+		<div class="binary-rain"></div>
+		
+		<!-- Floating Particles -->
+		<div class="particles-container">
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+			<div class="particle"></div>
+		</div>
+		
 		<main class="terminal-container">
 			<div class="terminal-window">
 				<div class="terminal-header">
@@ -40,6 +55,18 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<span class="prompt">root@tatteddev:~$</span> 
 						<span class="command" id="whoami-cmd"></span>
 						<span class="cursor" id="cursor-1">_</span>
+						
+						<!-- Holographic Tech Stack Cube -->
+						<div class="tech-cube-container">
+							<div class="tech-cube">
+								<div class="cube-face front">React</div>
+								<div class="cube-face back">Node.js</div>
+								<div class="cube-face right">TypeScript</div>
+								<div class="cube-face left">Python</div>
+								<div class="cube-face top">Azure</div>
+								<div class="cube-face bottom">Unity</div>
+							</div>
+						</div>
 					</div>
 					<div class="output" id="output-1" style="display: none;">
 						<div class="neon-sign">
@@ -271,8 +298,209 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 </html>
 
 <style>
+	/* Ensure header and footer appear above background effects */
+	:global(header) {
+		position: relative;
+		z-index: 100;
+	}
 
+	:global(footer) {
+		position: relative;
+		z-index: 100;
+	}
+
+	/* Binary Rain Background */
+	.binary-rain {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		pointer-events: none;
+		z-index: -2;
+		overflow: hidden;
+	}
 	
+	.binary-rain::before,
+	.binary-rain::after {
+		content: '0100101001011001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101';
+		position: absolute;
+		top: -100vh;
+		left: 0;
+		width: 100%;
+		height: 300vh;
+		color: rgba(0, 255, 65, 0.06);
+		font-family: 'Courier New', monospace;
+		font-size: 10px;
+		line-height: 12px;
+		word-wrap: break-word;
+		animation: binary-fall 20s linear infinite;
+		white-space: pre-wrap;
+		letter-spacing: 2px;
+	}
+	
+	.binary-rain::after {
+		content: '1010010100101100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101001010010100101';
+		animation-delay: -10s;
+		color: rgba(0, 255, 65, 0.04);
+		font-size: 8px;
+		line-height: 10px;
+		animation-duration: 25s;
+		letter-spacing: 1px;
+	}
+	
+	@keyframes binary-fall {
+		0% { transform: translateY(0); }
+		100% { transform: translateY(100vh); }
+	}
+	
+	/* Holographic Tech Stack Cube */
+	.tech-cube-container {
+		position: absolute;
+		right: 20px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 30px;
+		height: 30px;
+		perspective: 80px;
+		pointer-events: none;
+	}
+	
+	.tech-cube {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transform-style: preserve-3d;
+		animation: cube-rotate 15s infinite linear;
+	}
+	
+	.cube-face {
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		background: rgba(0, 255, 65, 0.05);
+		border: 1px solid var(--accent-lime);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Courier New', monospace;
+		font-size: 6px;
+		font-weight: bold;
+		color: var(--accent-lime);
+		text-shadow: 0 0 2px var(--accent-lime);
+		backdrop-filter: blur(0.5px);
+	}
+	
+	.cube-face.front { transform: rotateY(0deg) translateZ(15px); }
+	.cube-face.back { transform: rotateY(180deg) translateZ(15px); }
+	.cube-face.right { transform: rotateY(90deg) translateZ(15px); }
+	.cube-face.left { transform: rotateY(-90deg) translateZ(15px); }
+	.cube-face.top { transform: rotateX(90deg) translateZ(15px); }
+	.cube-face.bottom { transform: rotateX(-90deg) translateZ(15px); }
+	
+	@keyframes cube-rotate {
+		0% { transform: rotateX(0) rotateY(0); }
+		25% { transform: rotateX(90deg) rotateY(90deg); }
+		50% { transform: rotateX(180deg) rotateY(180deg); }
+		75% { transform: rotateX(270deg) rotateY(270deg); }
+		100% { transform: rotateX(360deg) rotateY(360deg); }
+	}
+	
+	/* Floating Particles */
+	.particles-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		pointer-events: none;
+		z-index: -1;
+		overflow: hidden;
+	}
+	
+	.particle {
+		position: absolute;
+		width: 2px;
+		height: 2px;
+		background: var(--neon-blue);
+		border-radius: 50%;
+		box-shadow: 0 0 6px var(--neon-blue);
+		animation: particle-float 20s infinite linear;
+	}
+	
+	.particle:nth-child(1) {
+		left: 10%;
+		animation-delay: 0s;
+		animation-duration: 18s;
+	}
+	
+	.particle:nth-child(2) {
+		left: 20%;
+		animation-delay: -3s;
+		animation-duration: 22s;
+		background: var(--neon-pink);
+		box-shadow: 0 0 6px var(--neon-pink);
+	}
+	
+	.particle:nth-child(3) {
+		left: 35%;
+		animation-delay: -6s;
+		animation-duration: 25s;
+	}
+	
+	.particle:nth-child(4) {
+		left: 50%;
+		animation-delay: -9s;
+		animation-duration: 20s;
+		background: var(--accent-lime);
+		box-shadow: 0 0 6px var(--accent-lime);
+	}
+	
+	.particle:nth-child(5) {
+		left: 65%;
+		animation-delay: -12s;
+		animation-duration: 19s;
+	}
+	
+	.particle:nth-child(6) {
+		left: 75%;
+		animation-delay: -15s;
+		animation-duration: 23s;
+		background: var(--accent-purple);
+		box-shadow: 0 0 6px var(--accent-purple);
+	}
+	
+	.particle:nth-child(7) {
+		left: 85%;
+		animation-delay: -18s;
+		animation-duration: 21s;
+		background: var(--neon-pink);
+		box-shadow: 0 0 6px var(--neon-pink);
+	}
+	
+	.particle:nth-child(8) {
+		left: 95%;
+		animation-delay: -21s;
+		animation-duration: 24s;
+	}
+	
+	@keyframes particle-float {
+		0% {
+			transform: translateY(100vh) translateX(-20px);
+			opacity: 0;
+		}
+		10% {
+			opacity: 1;
+		}
+		90% {
+			opacity: 1;
+		}
+		100% {
+			transform: translateY(-100px) translateX(20px);
+			opacity: 0;
+		}
+	}
+
 	.terminal-container {
 		padding: 2rem 1rem;
 		display: flex;
@@ -280,7 +508,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		align-items: flex-start;
 		min-height: 80vh;
 		position: relative;
-		z-index: 1;
+		z-index: 2;
 	}
 	
 	.terminal-window {
@@ -295,6 +523,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		font-family: 'Courier New', monospace;
 		font-size: 14px;
 		line-height: 1.4;
+		position: relative;
+		z-index: 1;
 	}
 	
 	.terminal-header {
@@ -347,6 +577,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	
 	.terminal-line {
 		margin-bottom: 0.5rem;
+		position: relative;
 	}
 	
 	.prompt {
