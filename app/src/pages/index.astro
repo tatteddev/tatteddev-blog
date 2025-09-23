@@ -12,6 +12,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	</head>
 	<body>
 		<Header />
+		
 		<main class="terminal-container">
 			<div class="terminal-window">
 				<div class="terminal-header">
@@ -253,12 +254,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 </html>
 
 <style>
+
+	
 	.terminal-container {
 		padding: 2rem 1rem;
 		display: flex;
 		justify-content: center;
 		align-items: flex-start;
 		min-height: 80vh;
+		position: relative;
+		z-index: 1;
 	}
 	
 	.terminal-window {
