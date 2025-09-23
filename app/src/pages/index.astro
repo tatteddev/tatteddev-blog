@@ -37,6 +37,31 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<span class="control maximize"></span>
 					</div>
 					<div class="terminal-title">terminal@tatteddev:~</div>
+					
+					<!-- System Monitoring Widgets -->
+					<div class="system-monitors">
+						<div class="monitor-widget">
+							<span class="monitor-label">CPU</span>
+							<div class="monitor-bar">
+								<div class="monitor-fill cpu-fill"></div>
+							</div>
+							<span class="monitor-value" id="cpu-value">45%</span>
+						</div>
+						<div class="monitor-widget">
+							<span class="monitor-label">RAM</span>
+							<div class="monitor-bar">
+								<div class="monitor-fill ram-fill"></div>
+							</div>
+							<span class="monitor-value" id="ram-value">67%</span>
+						</div>
+						<div class="monitor-widget">
+							<span class="monitor-label">NET</span>
+							<div class="monitor-bar">
+								<div class="monitor-fill net-fill"></div>
+							</div>
+							<span class="monitor-value" id="net-value">23%</span>
+						</div>
+					</div>
 				</div>
 				<div class="terminal-body" id="terminal-body">
 					<!-- Initial loading state -->
@@ -313,9 +338,46 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				await showElement('final-prompt', 800);
 			}
 			
+			// System Monitoring Animation
+			function updateSystemMonitors() {
+				// CPU usage simulation (30-80%)
+				const cpuValue = 30 + Math.random() * 50;
+				const cpuElement = document.getElementById('cpu-value');
+				const cpuFill = document.querySelector('.cpu-fill');
+				if (cpuElement && cpuFill) {
+					cpuElement.textContent = Math.round(cpuValue) + '%';
+					cpuFill.style.width = cpuValue + '%';
+				}
+				
+				// RAM usage simulation (50-85%)
+				const ramValue = 50 + Math.random() * 35;
+				const ramElement = document.getElementById('ram-value');
+				const ramFill = document.querySelector('.ram-fill');
+				if (ramElement && ramFill) {
+					ramElement.textContent = Math.round(ramValue) + '%';
+					ramFill.style.width = ramValue + '%';
+				}
+				
+				// Network activity simulation (5-90%)
+				const netValue = 5 + Math.random() * 85;
+				const netElement = document.getElementById('net-value');
+				const netFill = document.querySelector('.net-fill');
+				if (netElement && netFill) {
+					netElement.textContent = Math.round(netValue) + '%';
+					netFill.style.width = netValue + '%';
+				}
+			}
+			
+			// Start system monitoring
+			function startSystemMonitoring() {
+				updateSystemMonitors();
+				setInterval(updateSystemMonitors, 2000 + Math.random() * 3000); // Random 2-5 second updates
+			}
+
 			// Start animation when page loads
 			window.addEventListener('load', () => {
 				setTimeout(startAnimation, 500);
+				setTimeout(startSystemMonitoring, 1000);
 			});
 			
 			// Make scrollToBottom available globally
@@ -396,10 +458,18 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		pointer-events: none;
 	}
 
-	/* Mobile responsive - hide cube on smaller screens */
+	/* Mobile responsive - hide cube and system monitors on smaller screens */
 	@media (max-width: 768px) {
 		.tech-cube-container-right {
-			display: none;
+			display: none !important;
+		}
+		
+		.system-monitors {
+			display: none !important;
+		}
+		
+		.terminal-header .system-monitors {
+			display: none !important;
 		}
 	}
 
@@ -584,6 +654,42 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		line-height: 1.4;
 		position: relative;
 		z-index: 1;
+		animation: terminal-breathing 4s ease-in-out infinite;
+	}
+	
+	/* Breathing terminal border animation */
+	@keyframes terminal-breathing {
+		0%, 100% {
+			border-color: var(--neon-blue);
+			box-shadow: 
+				0 0 20px rgba(0, 246, 255, 0.3),
+				0 0 40px rgba(0, 246, 255, 0.1),
+				inset 0 0 20px rgba(0, 246, 255, 0.05);
+		}
+		25% {
+			border-color: #00d9ff;
+			box-shadow: 
+				0 0 24px rgba(0, 246, 255, 0.35),
+				0 0 48px rgba(0, 246, 255, 0.12),
+				0 0 80px rgba(0, 246, 255, 0.05),
+				inset 0 0 24px rgba(0, 246, 255, 0.06);
+		}
+		50% {
+			border-color: #00e6ff;
+			box-shadow: 
+				0 0 28px rgba(0, 246, 255, 0.4),
+				0 0 56px rgba(0, 246, 255, 0.15),
+				0 0 90px rgba(0, 246, 255, 0.08),
+				inset 0 0 28px rgba(0, 246, 255, 0.07);
+		}
+		75% {
+			border-color: #00d9ff;
+			box-shadow: 
+				0 0 24px rgba(0, 246, 255, 0.35),
+				0 0 48px rgba(0, 246, 255, 0.12),
+				0 0 80px rgba(0, 246, 255, 0.05),
+				inset 0 0 24px rgba(0, 246, 255, 0.06);
+		}
 	}
 	
 	.terminal-header {
@@ -627,6 +733,106 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		color: var(--neutral-light);
 		font-weight: bold;
 		font-size: 12px;
+		flex: 1;
+	}
+
+	/* System Monitoring Widgets */
+	.system-monitors {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		animation: system-heartbeat 4s ease-in-out infinite;
+	}
+
+	@keyframes system-heartbeat {
+		0%, 100% {
+			opacity: 0.85;
+		}
+		25% {
+			opacity: 0.9;
+		}
+		50% {
+			opacity: 0.95;
+		}
+		75% {
+			opacity: 0.9;
+		}
+	}
+
+	.monitor-widget {
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+		font-size: 10px;
+		color: var(--neutral-light);
+	}
+
+	.monitor-label {
+		font-weight: bold;
+		color: var(--neon-blue);
+		text-shadow: 0 0 3px var(--neon-blue);
+		min-width: 25px;
+	}
+
+	.monitor-bar {
+		width: 40px;
+		height: 8px;
+		background: rgba(0, 0, 0, 0.3);
+		border: 1px solid var(--neutral-dark);
+		border-radius: 2px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.monitor-fill {
+		height: 100%;
+		transition: width 0.3s ease;
+		position: relative;
+		border-radius: 1px;
+	}
+
+	.cpu-fill {
+		background: linear-gradient(90deg, var(--accent-lime), #ffff00);
+		box-shadow: 0 0 6px var(--accent-lime);
+		width: 45%;
+		animation: cpu-pulse 2s ease-in-out infinite alternate;
+	}
+
+	.ram-fill {
+		background: linear-gradient(90deg, var(--neon-blue), #00aaff);
+		box-shadow: 0 0 6px var(--neon-blue);
+		width: 67%;
+		animation: ram-pulse 3s ease-in-out infinite alternate;
+	}
+
+	.net-fill {
+		background: linear-gradient(90deg, var(--neon-pink), #ff0080);
+		box-shadow: 0 0 6px var(--neon-pink);
+		width: 23%;
+		animation: net-activity 1.5s ease-in-out infinite;
+	}
+
+	.monitor-value {
+		font-weight: bold;
+		min-width: 30px;
+		text-align: right;
+	}
+
+	@keyframes cpu-pulse {
+		0% { width: 35%; opacity: 0.8; }
+		100% { width: 65%; opacity: 1; }
+	}
+
+	@keyframes ram-pulse {
+		0% { width: 60%; opacity: 0.8; }
+		100% { width: 75%; opacity: 1; }
+	}
+
+	@keyframes net-activity {
+		0%, 100% { width: 10%; opacity: 0.6; }
+		25% { width: 50%; opacity: 1; }
+		50% { width: 30%; opacity: 0.8; }
+		75% { width: 80%; opacity: 1; }
 	}
 	
 	.terminal-body {
