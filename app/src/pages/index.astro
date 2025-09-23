@@ -55,18 +55,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<span class="prompt">root@tatteddev:~$</span> 
 						<span class="command" id="whoami-cmd"></span>
 						<span class="cursor" id="cursor-1">_</span>
-						
-						<!-- Holographic Tech Stack Cube -->
-						<div class="tech-cube-container">
-							<div class="tech-cube">
-								<div class="cube-face front">React</div>
-								<div class="cube-face back">Node.js</div>
-								<div class="cube-face right">TypeScript</div>
-								<div class="cube-face left">Python</div>
-								<div class="cube-face top">Azure</div>
-								<div class="cube-face bottom">Unity</div>
-							</div>
-						</div>
 					</div>
 					<div class="output" id="output-1" style="display: none;">
 						<div class="neon-sign">
@@ -140,6 +128,18 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 								<li><span class="symbol accent-purple">[$]</span> <strong>Indie Entrepreneurship</strong> — building HoneyHub and tools for creators.</li>
 								<li><span class="symbol warning">[~]</span> <strong>Lifestyle & Growth</strong> — personal productivity, fitness, and balancing tech with life.</li>
 							</ul>
+						</div>
+						
+						<!-- Holographic Tech Stack Cube positioned in interests section -->
+						<div class="tech-cube-container-right">
+							<div class="tech-cube">
+								<div class="cube-face front">React</div>
+								<div class="cube-face back">Node.js</div>
+								<div class="cube-face right">TypeScript</div>
+								<div class="cube-face left">Python</div>
+								<div class="cube-face top">Azure</div>
+								<div class="cube-face bottom">Unity</div>
+							</div>
 						</div>
 					</div>
 					
@@ -355,15 +355,47 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	}
 	
 	/* Holographic Tech Stack Cube */
-	.tech-cube-container {
+	.interests-section {
+		position: relative;
+	}
+
+	.tech-cube-container-right {
 		position: absolute;
-		right: 20px;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 30px;
-		height: 30px;
-		perspective: 80px;
+		right: 120px;
+		top: 5px;
+		width: 60px;
+		height: 60px;
+		perspective: 150px;
 		pointer-events: none;
+	}
+
+	/* Mobile responsive - hide cube on smaller screens */
+	@media (max-width: 768px) {
+		.tech-cube-container-right {
+			display: none;
+		}
+	}
+
+	/* Tablet adjustments */
+	@media (max-width: 1024px) and (min-width: 769px) {
+		.tech-cube-container-right {
+			right: 60px;
+			width: 50px;
+			height: 50px;
+		}
+		
+		.cube-face {
+			width: 50px;
+			height: 50px;
+			font-size: 8px;
+		}
+		
+		.cube-face.front { transform: rotateY(0deg) translateZ(25px); }
+		.cube-face.back { transform: rotateY(180deg) translateZ(25px); }
+		.cube-face.right { transform: rotateY(90deg) translateZ(25px); }
+		.cube-face.left { transform: rotateY(-90deg) translateZ(25px); }
+		.cube-face.top { transform: rotateX(90deg) translateZ(25px); }
+		.cube-face.bottom { transform: rotateX(-90deg) translateZ(25px); }
 	}
 	
 	.tech-cube {
@@ -376,27 +408,27 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	
 	.cube-face {
 		position: absolute;
-		width: 30px;
-		height: 30px;
+		width: 60px;
+		height: 60px;
 		background: rgba(0, 255, 65, 0.05);
 		border: 1px solid var(--accent-lime);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		font-family: 'Courier New', monospace;
-		font-size: 6px;
+		font-size: 10px;
 		font-weight: bold;
 		color: var(--accent-lime);
-		text-shadow: 0 0 2px var(--accent-lime);
+		text-shadow: 0 0 3px var(--accent-lime);
 		backdrop-filter: blur(0.5px);
 	}
 	
-	.cube-face.front { transform: rotateY(0deg) translateZ(15px); }
-	.cube-face.back { transform: rotateY(180deg) translateZ(15px); }
-	.cube-face.right { transform: rotateY(90deg) translateZ(15px); }
-	.cube-face.left { transform: rotateY(-90deg) translateZ(15px); }
-	.cube-face.top { transform: rotateX(90deg) translateZ(15px); }
-	.cube-face.bottom { transform: rotateX(-90deg) translateZ(15px); }
+	.cube-face.front { transform: rotateY(0deg) translateZ(30px); }
+	.cube-face.back { transform: rotateY(180deg) translateZ(30px); }
+	.cube-face.right { transform: rotateY(90deg) translateZ(30px); }
+	.cube-face.left { transform: rotateY(-90deg) translateZ(30px); }
+	.cube-face.top { transform: rotateX(90deg) translateZ(30px); }
+	.cube-face.bottom { transform: rotateX(-90deg) translateZ(30px); }
 	
 	@keyframes cube-rotate {
 		0% { transform: rotateX(0) rotateY(0); }
