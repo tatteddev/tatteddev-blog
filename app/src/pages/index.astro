@@ -94,25 +94,91 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 					<!-- Command 2: network scan -->
 					<div class="terminal-line" id="cmd-2" style="display: none;">
 						<span class="prompt">root@tatteddev:~$</span> 
-						<span class="command" id="nmap-cmd"></span>
+						<span class="command glitchy-command" id="nmap-cmd"></span>
 						<span class="cursor" id="cursor-2">_</span>
 					</div>
 					<div class="output matrix-section" id="output-2" style="display: none;">
-						<p class="scan-text" id="matrix-line-1" style="display: none;">Initializing neural interface...</p>
-						<p class="scan-text" id="matrix-line-2" style="display: none;">Connecting to local skillset repository...</p>
+						<p class="scan-text interference-text" id="matrix-line-1" style="display: none;">...signal interference detected...</p>
+						<p class="scan-text interference-text" id="matrix-line-2" style="display: none;">...neural uplink initializing...</p>
 						<p class="scan-text" id="matrix-line-3" style="display: none;"><span class="accent-lime">Connection established.</span></p>
 						<br id="matrix-break-1" style="display: none;" />
+						
+						<!-- Binary Cascade -->
+						<div class="binary-cascade" id="binary-cascade-1" style="display: none;">
+							<pre class="cascade-text">
+01001000 01100101 01101100 01101100 01101111
+7A 65 72 6F 73 20 61 6E 64 20 6F 6E 65 73
+</pre>
+						</div>
+						
 						<p class="scan-text" id="matrix-line-4" style="display: none;">Uploading tatteddev_skills.pkg...</p>
 						<div class="progress-bar" id="matrix-progress" style="display: none;">
 							<div class="progress-fill"></div>
 						</div>
 						<br id="matrix-break-2" style="display: none;" />
 						<p class="scan-text" id="matrix-line-5" style="display: none;"><span class="accent-lime">Upload successful.</span></p>
+						
+						<!-- Morpheus Pill Choice -->
+						<div class="pill-choice-container" id="pill-choice" style="display: none;">
+							<p class="morpheus-text">This is your last chance. After this, there is no going back.</p>
+							<p class="morpheus-text">You take the <span class="blue-pill">blue pill</span> - the story ends, you wake up in your bed and believe whatever you want to believe.</p>
+							<p class="morpheus-text">You take the <span class="red-pill">red pill</span> - you stay in Wonderland, and I show you how deep the rabbit hole goes.</p>
+							<div class="pill-buttons">
+								<button class="pill-button blue-choice" id="blue-pill-btn">Take the Blue Pill</button>
+								<button class="pill-button red-choice" id="red-pill-btn">Take the Red Pill</button>
+							</div>
+							<div class="countdown-container">
+								<p class="countdown-text" id="countdown-text">Choose wisely... <span class="countdown-timer" id="countdown-timer">10</span> seconds remaining</p>
+							</div>
+							<p class="choice-timeout" id="choice-timeout" style="display: none;">Time is up... choosing the red pill for you...</p>
+						</div>
+						
+						<!-- Blue Pill Ending -->
+						<div class="blue-pill-ending" id="blue-pill-ending" style="display: none;">
+							<p class="scan-text">Connection terminated.</p>
+							<p class="scan-text">Returning to normal mode...</p>
+							<p class="scan-text">Have a nice day, Mr. Anderson.</p>
+						</div>
+						
+						<!-- Matrix Initialization Sequence -->
+						<div class="matrix-init" id="matrix-init" style="display: none;">
+							<p class="init-text" id="init-line-1" style="display: none;">Establishing secure connection...</p>
+							<p class="init-text" id="init-line-2" style="display: none;">Handshake protocol initiated...</p>
+							<p class="init-text" id="init-line-3" style="display: none;">Neuronal pathways mapping...</p>
+							<p class="init-text" id="init-line-4" style="display: none;">Consciousness transfer beginning...</p>
+							
+							<!-- Slow Matrix Awakening -->
+							<div class="matrix-awakening" id="matrix-awakening" style="display: none;">
+								<p class="awaken-text" id="awaken-line-1" style="display: none;">Reality.exe has stopped working...</p>
+								<p class="awaken-text" id="awaken-line-2" style="display: none;">Loading new environment...</p>
+								<p class="awaken-text" id="awaken-line-3" style="display: none;">Welcome to the real world.</p>
+								<br id="awaken-break" style="display: none;" />
+								<p class="awaken-text morpheus-voice" id="awaken-line-4" style="display: none;">"Your mind makes it real."</p>
+								<br id="awaken-break-2" style="display: none;" />
+								<p class="awaken-text final-greeting" id="awaken-line-5" style="display: none;">Hello, Mr. Anderson.</p>
+							</div>
+						</div>
+						
 						<p class="scan-text" id="matrix-line-6" style="display: none;">Installing full-stack frameworks...</p>
 						<p class="scan-text" id="matrix-line-7" style="display: none;">Installing security protocols...</p>
 						<p class="scan-text" id="matrix-line-8" style="display: none;">Installing creative utilities...</p>
 						<br id="matrix-break-3" style="display: none;" />
-						<p class="matrix-quote" id="matrix-quote" style="display: none;"><span class="neon-pink">"I know kung fu."</span></p>
+						
+						<!-- Matrix Whisper Quote -->
+						<div class="matrix-final" id="matrix-final" style="display: none;">
+							<p class="matrix-whisper" id="matrix-whisper"><span class="whisper-bracket">~ a voice echoes ~</span><br><span class="neon-pink">"I know kung fu."</span></p>
+						</div>
+						
+						<!-- Final Binary Cascade -->
+						<div class="final-cascade" id="final-cascade" style="display: none;">
+							<pre class="cascade-fade">
+000111010101000101000111...
+...
+...
+_connection_lost_
+</pre>
+						</div>
+					</div>
 					</div>
 
 					<!-- Command 3: cat about.txt -->
@@ -122,6 +188,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<span class="cursor" id="cursor-7">_</span>
 					</div>
 					<div class="output about-section" id="output-7" style="display: none;">
+						<div class="ascii-section-header">
+							<pre class="section-ascii about-ascii">
+     █████╗ ██████╗  ██████╗ ██╗   ██╗████████╗    ███╗   ███╗███████╗
+    ██╔══██╗██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝    ████╗ ████║██╔════╝
+    ███████║██████╔╝██║   ██║██║   ██║   ██║       ██╔████╔██║█████╗  
+    ██╔══██║██╔══██╗██║   ██║██║   ██║   ██║       ██║╚██╔╝██║██╔══╝  
+    ██║  ██║██████╔╝╚██████╔╝╚██████╔╝   ██║       ██║ ╚═╝ ██║███████╗
+    ╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝       ╚═╝     ╚═╝╚══════╝
+							</pre>
+						</div>
 						<div class="about-content">
 							<h2 class="neon-glow-pink">[~] About Me</h2>
 							<p>This blog is a digital lab where I explore the things I'm most obsessed with.</p>
@@ -136,6 +212,35 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<span class="cursor" id="cursor-8">_</span>
 					</div>
 					<div class="output interests-section" id="output-8" style="display: none;">
+						<div class="ascii-section-header">
+							<pre class="section-ascii interests-ascii">
+    ███████╗██╗  ██╗██╗██╗     ██╗     ███████╗
+    ██╔════╝██║ ██╔╝██║██║     ██║     ██╔════╝
+    ███████╗█████╔╝ ██║██║     ██║     ███████╗
+    ╚════██║██╔═██╗ ██║██║     ██║     ╚════██║
+    ███████║██║  ██╗██║███████╗███████╗███████║
+    ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝
+    
+    ███████╗██╗  ██╗██████╗ ███████╗██████╗ ████████╗██╗███████╗███████╗
+    ██╔════╝╚██╗██╔╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██║██╔════╝██╔════╝
+    █████╗   ╚███╔╝ ██████╔╝█████╗  ██████╔╝   ██║   ██║███████╗█████╗  
+    ██╔══╝   ██╔██╗ ██╔═══╝ ██╔══╝  ██╔══██╗   ██║   ██║╚════██║██╔══╝  
+    ███████╗██╔╝ ██╗██║     ███████╗██║  ██║   ██║   ██║███████║███████╗
+    ╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝╚══════╝╚══════╝
+							</pre>
+							
+							<!-- Holographic Tech Stack Cube positioned inside ASCII header -->
+							<div class="tech-cube-container-inside">
+								<div class="tech-cube">
+									<div class="cube-face front">React</div>
+									<div class="cube-face back">Node.js</div>
+									<div class="cube-face right">TypeScript</div>
+									<div class="cube-face left">Python</div>
+									<div class="cube-face top">Azure</div>
+									<div class="cube-face bottom">Unity</div>
+								</div>
+							</div>
+						</div>
 						<div class="about-content">
 							<h2 class="neon-glow-blue">[#] Core Interests & Expertise</h2>
 							<p>Expect posts that dive deep into:</p>
@@ -153,18 +258,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 								<li><span class="symbol warning">[~]</span> <strong>Lifestyle & Growth</strong> — personal productivity, fitness, and balancing tech with life.</li>
 							</ul>
 						</div>
-						
-						<!-- Holographic Tech Stack Cube positioned in interests section -->
-						<div class="tech-cube-container-right">
-							<div class="tech-cube">
-								<div class="cube-face front">React</div>
-								<div class="cube-face back">Node.js</div>
-								<div class="cube-face right">TypeScript</div>
-								<div class="cube-face left">Python</div>
-								<div class="cube-face top">Azure</div>
-								<div class="cube-face bottom">Unity</div>
-							</div>
-						</div>
 					</div>
 					
 					<!-- Command 9: recent posts -->
@@ -174,6 +267,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						<span class="cursor" id="cursor-9">_</span>
 					</div>
 					<div class="output" id="output-9" style="display: none;">
+						<div class="ascii-section-header">
+							<pre class="section-ascii blog-ascii">
+    ██████╗ ███████╗ ██████╗███████╗███╗   ██╗████████╗    ██████╗  ██████╗ ███████╗████████╗███████╗
+    ██╔══██╗██╔════╝██╔════╝██╔════╝████╗  ██║╚══██╔══╝    ██╔══██╗██╔═══██╗██╔════╝╚══██╔══╝██╔════╝
+    ██████╔╝█████╗  ██║     █████╗  ██╔██╗ ██║   ██║       ██████╔╝██║   ██║███████╗   ██║   ███████╗
+    ██╔══██╗██╔══╝  ██║     ██╔══╝  ██║╚██╗██║   ██║       ██╔═══╝ ██║   ██║╚════██║   ██║   ╚════██║
+    ██║  ██║███████╗╚██████╗███████╗██║ ╚████║   ██║       ██║     ╚██████╔╝███████║   ██║   ███████║
+    ╚═╝  ╚═╝╚══════╝ ╚═════╝╚══════╝╚═╝  ╚═══╝   ╚═╝       ╚═╝      ╚═════╝ ╚══════╝   ╚═╝   ╚══════╝
+							</pre>
+						</div>
 						<p class="directory-listing">./blog/<a href="/blog/using-mdx" class="file-link">using-mdx.mdx</a></p>
 						<p class="directory-listing">./blog/<a href="/blog/third-post" class="file-link">third-post.md</a></p>
 						<p class="directory-listing">./blog/<a href="/blog/second-post" class="file-link">second-post.md</a></p>
@@ -198,7 +301,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			let currentStep = 0;
 			const commands = [
 				{ element: 'whoami-cmd', text: 'whoami', delay: 1200 },
-				{ element: 'nmap-cmd', text: 'upload --neural tatteddev_skills.pkg', delay: 1800 },
+				{ element: 'nmap-cmd', text: 'upl0ad --neural tatteddev_skil1s.pkg', delay: 1800 },
 				{ element: 'cat-cmd', text: 'cat about.txt', delay: 1600 },
 				{ element: 'interests-cmd', text: 'cat interests.txt', delay: 1800 },
 				{ element: 'recent-cmd', text: 'find ./blog -name "*.md"', delay: 1400 }
@@ -303,6 +406,85 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				await showElement('matrix-break-2', 200);
 				await showElement('matrix-line-5', 500);
 				scrollToBottom();
+				
+				// Morpheus Pill Choice
+				await new Promise(resolve => setTimeout(resolve, 1000));
+				await showElement('pill-choice', 800);
+				scrollToBottom();
+				
+				// Wait for user choice or timeout
+				const userChoice = await waitForPillChoice();
+				
+				if (userChoice === 'blue') {
+					// Blue pill ending - stay in normal world
+					await showElement('blue-pill-ending', 600);
+					scrollToBottom();
+					await new Promise(resolve => setTimeout(resolve, 3000));
+					// Continue with normal installation without Matrix stuff
+					await continueNormalSequence();
+				} else {
+					// Red pill or timeout - go into the Matrix
+					await enterTheMatrix();
+				}
+			}
+			
+			function waitForPillChoice() {
+				return new Promise((resolve) => {
+					let choiceMade = false;
+					let countdown = 10;
+					let countdownInterval;
+					let timeoutId;
+					
+					// Set up button event listeners
+					const bluePill = document.getElementById('blue-pill-btn');
+					const redPill = document.getElementById('red-pill-btn');
+					const countdownTimer = document.getElementById('countdown-timer');
+					const countdownText = document.getElementById('countdown-text');
+					const timeoutMsg = document.getElementById('choice-timeout');
+					
+					function makeChoice(choice) {
+						if (choiceMade) return;
+						choiceMade = true;
+						clearTimeout(timeoutId);
+						clearInterval(countdownInterval);
+						
+						// Hide pill choice
+						document.getElementById('pill-choice').style.display = 'none';
+						resolve(choice);
+					}
+					
+					// Update countdown display
+					function updateCountdown() {
+						if (countdownTimer && countdown > 0) {
+							countdownTimer.textContent = countdown;
+							countdown--;
+						}
+					}
+					
+					// Start countdown
+					countdownInterval = setInterval(updateCountdown, 1000);
+					
+					bluePill.addEventListener('click', () => makeChoice('blue'));
+					redPill.addEventListener('click', () => makeChoice('red'));
+					
+					// Auto-choose red pill after 10 seconds
+					timeoutId = setTimeout(() => {
+						if (!choiceMade) {
+							clearInterval(countdownInterval);
+							// Hide countdown and show timeout message
+							if (countdownText) countdownText.style.display = 'none';
+							if (timeoutMsg) timeoutMsg.style.display = 'block';
+							
+							setTimeout(() => {
+								makeChoice('red');
+							}, 2000);
+						}
+					}, 10000);
+				});
+			}
+			
+			async function continueNormalSequence() {
+				// Normal installation without Matrix effects
 				await showElement('matrix-line-6', 600);
 				scrollToBottom();
 				await showElement('matrix-line-7', 500);
@@ -310,10 +492,114 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				await showElement('matrix-line-8', 600);
 				scrollToBottom();
 				await showElement('matrix-break-3', 400);
-				await showElement('matrix-quote', 800);
+				
+				// Continue with regular sections
+				await showElement('cmd-7', commands[2].delay);
+				await typeText('cat-cmd', commands[2].text, 90);
+				hideCursor('cursor-7');
+				await showElement('output-7', 400);
 				scrollToBottom();
 				
-				// Command 3: cat about.txt
+				// Command 4: cat interests.txt
+				await showElement('cmd-8', commands[3].delay);
+				await typeText('interests-cmd', commands[3].text, 85);
+				hideCursor('cursor-8');
+				await showElement('output-8', 500);
+				scrollToBottom();
+				
+				// Command 5: recent posts
+				await showElement('cmd-9', commands[4].delay);
+				await typeText('recent-cmd', commands[4].text, 70);
+				hideCursor('cursor-9');
+				await showElement('output-9', 400);
+				scrollToBottom();
+				
+				// Final prompt
+				await showElement('final-prompt', 800);
+			}
+			
+			async function enterTheMatrix() {
+				// Pause for dramatic effect
+				await new Promise(resolve => setTimeout(resolve, 1000));
+				
+				// Binary Cascade 1 - brief and subtle
+				await showElement('binary-cascade-1', 600);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 2000));
+				
+				// Matrix Initialization - Slow and deliberate
+				await showElement('matrix-init', 800);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 1500));
+				
+				await showElement('init-line-1', 1000);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 2000));
+				
+				await showElement('init-line-2', 1000);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 2500));
+				
+				await showElement('init-line-3', 1000);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 3000));
+				
+				await showElement('init-line-4', 1000);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 2500));
+				
+				// Binary Cascade 2 - transition moment
+				await showElement('binary-cascade-2', 600);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 2000));
+				
+				// Matrix Awakening - The profound moment
+				await showElement('matrix-awakening', 1200);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 2000));
+				
+				await showElement('awaken-line-1', 1500);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 3000));
+				
+				await showElement('awaken-line-2', 1500);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 2500));
+				
+				await showElement('awaken-line-3', 1500);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 3000));
+				
+				await showElement('awaken-break', 200);
+				await showElement('awaken-line-4', 2000);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 4000));
+				
+				await showElement('awaken-break-2', 200);
+				await showElement('awaken-line-5', 2000);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 3000));
+				
+				// Continue with regular installation
+				await showElement('matrix-line-6', 600);
+				scrollToBottom();
+				await showElement('matrix-line-7', 500);
+				scrollToBottom();
+				await showElement('matrix-line-8', 600);
+				scrollToBottom();
+				await showElement('matrix-break-3', 400);
+				
+				// Final Matrix Quote
+				await showElement('matrix-final', 1200);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 2000));
+				
+				// Final Binary Cascade (connection lost)
+				await showElement('final-cascade', 800);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 3000));
+				
+				// Continue with regular sections
 				await showElement('cmd-7', commands[2].delay);
 				await typeText('cat-cmd', commands[2].text, 90);
 				hideCursor('cursor-7');
@@ -469,17 +755,47 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 	.tech-cube-container-right {
 		position: absolute;
-		right: 120px;
-		top: 5px;
+		right: 70px;
+		top: -15px;
+		width: 70px;
+		height: 70px;
+		perspective: 180px;
+		pointer-events: none;
+		z-index: 10;
+	}
+	
+	/* New positioning for cube inside ASCII header */
+	.tech-cube-container-inside {
+		position: absolute;
+		right: 50px;
+		top: 40px;
 		width: 60px;
 		height: 60px;
 		perspective: 150px;
 		pointer-events: none;
+		z-index: 15;
 	}
+	
+	.tech-cube-container-inside .cube-face {
+		width: 60px;
+		height: 60px;
+		font-size: 9px;
+	}
+	
+	.tech-cube-container-inside .cube-face.front { transform: rotateY(0deg) translateZ(30px); }
+	.tech-cube-container-inside .cube-face.back { transform: rotateY(180deg) translateZ(30px); }
+	.tech-cube-container-inside .cube-face.right { transform: rotateY(90deg) translateZ(30px); }
+	.tech-cube-container-inside .cube-face.left { transform: rotateY(-90deg) translateZ(30px); }
+	.tech-cube-container-inside .cube-face.top { transform: rotateX(90deg) translateZ(30px); }
+	.tech-cube-container-inside .cube-face.bottom { transform: rotateX(-90deg) translateZ(30px); }
 
 	/* Mobile responsive - hide cube and system monitors on smaller screens */
 	@media (max-width: 768px) {
 		.tech-cube-container-right {
+			display: none !important;
+		}
+		
+		.tech-cube-container-inside {
 			display: none !important;
 		}
 		
@@ -496,22 +812,43 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	@media (max-width: 1024px) and (min-width: 769px) {
 		.tech-cube-container-right {
 			right: 60px;
+			top: 10px;
+			width: 60px;
+			height: 60px;
+		}
+		
+		.tech-cube-container-inside {
+			right: 40px;
+			top: 45px;
 			width: 50px;
 			height: 50px;
 		}
 		
-		.cube-face {
+		.tech-cube-container-inside .cube-face {
 			width: 50px;
 			height: 50px;
 			font-size: 8px;
 		}
 		
-		.cube-face.front { transform: rotateY(0deg) translateZ(25px); }
-		.cube-face.back { transform: rotateY(180deg) translateZ(25px); }
-		.cube-face.right { transform: rotateY(90deg) translateZ(25px); }
-		.cube-face.left { transform: rotateY(-90deg) translateZ(25px); }
-		.cube-face.top { transform: rotateX(90deg) translateZ(25px); }
-		.cube-face.bottom { transform: rotateX(-90deg) translateZ(25px); }
+		.tech-cube-container-inside .cube-face.front { transform: rotateY(0deg) translateZ(25px); }
+		.tech-cube-container-inside .cube-face.back { transform: rotateY(180deg) translateZ(25px); }
+		.tech-cube-container-inside .cube-face.right { transform: rotateY(90deg) translateZ(25px); }
+		.tech-cube-container-inside .cube-face.left { transform: rotateY(-90deg) translateZ(25px); }
+		.tech-cube-container-inside .cube-face.top { transform: rotateX(90deg) translateZ(25px); }
+		.tech-cube-container-inside .cube-face.bottom { transform: rotateX(-90deg) translateZ(25px); }
+		
+		.cube-face {
+			width: 60px;
+			height: 60px;
+			font-size: 9px;
+		}
+		
+		.cube-face.front { transform: rotateY(0deg) translateZ(30px); }
+		.cube-face.back { transform: rotateY(180deg) translateZ(30px); }
+		.cube-face.right { transform: rotateY(90deg) translateZ(30px); }
+		.cube-face.left { transform: rotateY(-90deg) translateZ(30px); }
+		.cube-face.top { transform: rotateX(90deg) translateZ(30px); }
+		.cube-face.bottom { transform: rotateX(-90deg) translateZ(30px); }
 	}
 	
 	.tech-cube {
@@ -524,8 +861,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	
 	.cube-face {
 		position: absolute;
-		width: 60px;
-		height: 60px;
+		width: 70px;
+		height: 70px;
 		background: rgba(0, 255, 65, 0.05);
 		border: 1px solid var(--accent-lime);
 		display: flex;
@@ -537,14 +874,15 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		color: var(--accent-lime);
 		text-shadow: 0 0 3px var(--accent-lime);
 		backdrop-filter: blur(0.5px);
+		box-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
 	}
 	
-	.cube-face.front { transform: rotateY(0deg) translateZ(30px); }
-	.cube-face.back { transform: rotateY(180deg) translateZ(30px); }
-	.cube-face.right { transform: rotateY(90deg) translateZ(30px); }
-	.cube-face.left { transform: rotateY(-90deg) translateZ(30px); }
-	.cube-face.top { transform: rotateX(90deg) translateZ(30px); }
-	.cube-face.bottom { transform: rotateX(-90deg) translateZ(30px); }
+	.cube-face.front { transform: rotateY(0deg) translateZ(35px); }
+	.cube-face.back { transform: rotateY(180deg) translateZ(35px); }
+	.cube-face.right { transform: rotateY(90deg) translateZ(35px); }
+	.cube-face.left { transform: rotateY(-90deg) translateZ(35px); }
+	.cube-face.top { transform: rotateX(90deg) translateZ(35px); }
+	.cube-face.bottom { transform: rotateX(-90deg) translateZ(35px); }
 	
 	@keyframes cube-rotate {
 		0% { transform: rotateX(0) rotateY(0); }
@@ -1363,9 +1701,541 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		animation: matrix-glow 2s ease-in-out infinite alternate;
 	}
 	
+	/* Matrix Takeover Effects */
+	.matrix-takeover {
+		background: rgba(0, 0, 0, 0.9);
+		border: 2px solid var(--accent-lime);
+		padding: 1rem;
+		margin: 1rem 0;
+		border-radius: 4px;
+		animation: matrix-flicker 0.5s ease-in-out;
+	}
+	
+	/* Glitchy Command Effects */
+	.glitchy-command {
+		animation: command-glitch 0.1s ease-in-out infinite alternate;
+	}
+	
+	.interference-text {
+		color: #666;
+		font-style: italic;
+		animation: text-interference 2s ease-in-out;
+	}
+	
+	/* Binary Cascade Effects */
+	.binary-cascade {
+		margin: 1.2rem 0;
+		padding: 0;
+		background: transparent;
+		border: none;
+		overflow: hidden;
+	}
+	
+	.cascade-text {
+		font-family: 'Courier New', monospace;
+		font-size: 11px;
+		line-height: 1.4;
+		color: var(--accent-lime);
+		margin: 0;
+		animation: binary-rain 1.5s ease-out;
+		text-shadow: 0 0 5px var(--accent-lime);
+		padding-left: 1rem;
+	}
+	
+	.glitch-cascade {
+		animation: cascade-glitch 0.8s ease-in-out;
+	}
+	
+	/* Matrix Initialization - Calm and Atmospheric */
+	.matrix-init {
+		background: rgba(0, 5, 0, 0.9);
+		border: 1px solid rgba(0, 255, 0, 0.3);
+		padding: 2rem;
+		margin: 2rem 0;
+		border-radius: 4px;
+		animation: gentle-glow 3s ease-in-out infinite alternate;
+	}
+	
+	.init-text {
+		color: rgba(0, 255, 0, 0.8);
+		font-family: 'Courier New', monospace;
+		margin: 1rem 0;
+		font-size: 0.9rem;
+		opacity: 0;
+		animation: fade-in-slow 2s ease-out forwards;
+	}
+	
+	/* Matrix Awakening - Deep and Profound */
+	.matrix-awakening {
+		background: rgba(0, 0, 0, 0.95);
+		border: 1px solid rgba(0, 255, 0, 0.5);
+		padding: 2.5rem;
+		margin: 2rem 0;
+		border-radius: 4px;
+		text-align: center;
+	}
+	
+	.awaken-text {
+		color: rgba(0, 255, 0, 0.9);
+		font-family: 'Courier New', monospace;
+		margin: 1.5rem 0;
+		font-size: 1rem;
+		opacity: 0;
+		animation: profound-emerge 3s ease-out forwards;
+	}
+	
+	.morpheus-voice {
+		color: rgba(0, 200, 100, 1) !important;
+		font-style: italic;
+		font-size: 1.1rem;
+		text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+	}
+	
+	.final-greeting {
+		color: rgba(0, 255, 0, 1) !important;
+		font-weight: bold;
+		font-size: 1.2rem;
+		text-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+		letter-spacing: 1px;
+	}
+	
+	/* Matrix Whisper Effect */
+	.matrix-whisper {
+		font-family: 'Courier New', monospace;
+		text-align: center;
+		font-size: 1.1rem;
+		margin: 1rem 0;
+	}
+	
+	.whisper-bracket {
+		color: var(--accent-lime);
+		font-size: 0.9rem;
+		opacity: 0.8;
+	}
+	
+	/* Final Cascade Effect */
+	.final-cascade {
+		margin: 1.5rem 0;
+		text-align: center;
+	}
+	
+	.cascade-fade {
+		font-family: 'Courier New', monospace;
+		font-size: 12px;
+		line-height: 1.4;
+		color: var(--accent-lime);
+		margin: 0;
+		animation: fade-cascade 4s ease-out forwards;
+		opacity: 1;
+	}
+	
+	/* Hacking Sequence Effects */
+	.hacking-sequence {
+		background: rgba(20, 0, 0, 0.9);
+		border: 2px solid var(--error-red);
+		padding: 1rem;
+		margin: 1rem 0;
+		border-radius: 4px;
+		animation: hack-flicker 0.3s ease-in-out infinite;
+	}
+	
+	.hack-text {
+		color: var(--error-red);
+		font-family: 'Courier New', monospace;
+		margin: 0.3rem 0;
+		animation: hack-glitch 0.6s ease-in-out infinite;
+	}
+	
+	.matrix-final {
+		background: rgba(0, 20, 0, 0.9);
+		border: 2px solid var(--neon-pink);
+		padding: 2rem;
+		margin: 1rem 0;
+		border-radius: 4px;
+		text-align: center;
+		animation: final-emerge 2s ease-out;
+	}
+	
+	.matrix-interference {
+		color: var(--accent-lime);
+		font-family: 'Courier New', monospace;
+		text-align: center;
+		margin: 0.5rem 0;
+		animation: glitch-text 0.8s ease-in-out infinite;
+	}
+	
+	/* Pill Choice Interface */
+	.pill-choice-container {
+		background: rgba(0, 0, 0, 0.95);
+		border: 2px solid var(--neutral-light);
+		padding: 2rem;
+		margin: 2rem 0;
+		border-radius: 8px;
+		text-align: center;
+		animation: pill-choice-appear 1s ease-out;
+	}
+	
+	.morpheus-text {
+		color: var(--neutral-light);
+		font-family: 'Courier New', monospace;
+		font-size: 1rem;
+		line-height: 1.6;
+		margin: 1rem 0;
+	}
+	
+	.blue-pill {
+		color: #4a90e2;
+		font-weight: bold;
+		text-shadow: 0 0 5px #4a90e2;
+	}
+	
+	.red-pill {
+		color: var(--error-red);
+		font-weight: bold;
+		text-shadow: 0 0 5px var(--error-red);
+	}
+	
+	.pill-buttons {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		margin: 2rem 0;
+	}
+	
+	.pill-button {
+		padding: 1rem 2rem;
+		border: 2px solid;
+		background: transparent;
+		color: white;
+		font-family: 'Courier New', monospace;
+		font-size: 1rem;
+		cursor: pointer;
+		border-radius: 25px;
+		transition: all 0.3s ease;
+		min-width: 150px;
+	}
+	
+	.blue-choice {
+		border-color: #4a90e2;
+		color: #4a90e2;
+	}
+	
+	.blue-choice:hover {
+		background: #4a90e2;
+		color: black;
+		box-shadow: 0 0 20px #4a90e2;
+	}
+	
+	.red-choice {
+		border-color: var(--error-red);
+		color: var(--error-red);
+	}
+	
+	.red-choice:hover {
+		background: var(--error-red);
+		color: black;
+		box-shadow: 0 0 20px var(--error-red);
+	}
+	
+	.choice-timeout {
+		color: #ff6666;
+		font-style: italic;
+		animation: timeout-pulse 1s ease-in-out infinite;
+	}
+	
+	.countdown-container {
+		margin: 1.5rem 0;
+		padding: 1rem;
+		border: 1px solid var(--neutral-light);
+		border-radius: 4px;
+		background: rgba(0, 0, 0, 0.3);
+	}
+	
+	.countdown-text {
+		color: var(--neutral-light);
+		font-family: 'Courier New', monospace;
+		font-size: 1rem;
+		margin: 0;
+		text-align: center;
+	}
+	
+	.countdown-timer {
+		color: var(--error-red);
+		font-weight: bold;
+		font-size: 1.2rem;
+		text-shadow: 0 0 5px var(--error-red);
+		animation: countdown-pulse 1s ease-in-out infinite;
+	}
+	
+	.blue-pill-ending {
+		background: rgba(0, 0, 50, 0.9);
+		border: 2px solid #4a90e2;
+		padding: 1.5rem;
+		margin: 1rem 0;
+		border-radius: 4px;
+		animation: blue-fade 2s ease-out;
+	}
+	
+	.glitch-text {
+		text-shadow: 
+			0 0 5px var(--accent-lime),
+			0 0 10px var(--accent-lime),
+			0 0 15px var(--accent-lime);
+		animation: matrix-pulse 1.5s ease-in-out infinite;
+	}
+	
+	.matrix-rain-container {
+		overflow: hidden;
+		margin: 1rem 0;
+	}
+	
+	.matrix-ascii {
+		font-family: 'Courier New', monospace;
+		font-size: 8px;
+		line-height: 1;
+		color: var(--accent-lime);
+		text-shadow: 0 0 3px var(--accent-lime);
+		text-align: center;
+		margin: 0;
+		animation: matrix-data-flow 3s ease-in-out;
+	}
+	
+	.matrix-quote-container {
+		background: rgba(0, 0, 0, 0.8);
+		border: 2px solid var(--neon-pink);
+		padding: 1rem;
+		margin: 1rem 0;
+		border-radius: 4px;
+		text-align: center;
+		animation: final-glow 2s ease-in-out;
+	}
+	
+	.kung-fu-ascii {
+		font-family: 'Courier New', monospace;
+		font-size: 6px;
+		line-height: 0.8;
+		color: var(--neon-pink);
+		text-shadow: 0 0 3px var(--neon-pink);
+		margin: 0 0 1rem 0;
+		animation: ascii-emerge 2s ease-out;
+	}
+	
+	/* ASCII Section Headers */
+	.ascii-section-header {
+		text-align: center;
+		margin-bottom: 1.5rem;
+		padding: 1rem;
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: 4px;
+		border: 1px solid rgba(0, 246, 255, 0.2);
+	}
+	
+	.section-ascii {
+		font-family: 'Courier New', monospace;
+		font-size: 7px;
+		line-height: 0.9;
+		margin: 0;
+		text-shadow: 0 0 3px currentColor;
+		animation: section-ascii-glow 3s ease-in-out infinite alternate;
+	}
+	
+	.about-ascii {
+		color: var(--neon-pink);
+		text-shadow: 0 0 3px var(--neon-pink);
+	}
+	
+	.interests-ascii {
+		color: var(--neon-blue);
+		text-shadow: 0 0 3px var(--neon-blue);
+	}
+	
+	.blog-ascii {
+		color: var(--accent-lime);
+		text-shadow: 0 0 3px var(--accent-lime);
+	}
+	
+	@keyframes section-ascii-glow {
+		0% {
+			text-shadow: 0 0 3px currentColor;
+		}
+		100% {
+			text-shadow: 
+				0 0 3px currentColor,
+				0 0 8px currentColor,
+				0 0 12px currentColor;
+		}
+	}
+	
+	@keyframes matrix-flicker {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.8; }
+	}
+	
+	@keyframes glitch-text {
+		0%, 100% { transform: translateX(0); }
+		20% { transform: translateX(-2px); }
+		40% { transform: translateX(2px); }
+		60% { transform: translateX(-1px); }
+		80% { transform: translateX(1px); }
+	}
+	
+	@keyframes matrix-pulse {
+		0% { 
+			text-shadow: 0 0 5px var(--accent-lime); 
+		}
+		50% { 
+			text-shadow: 
+				0 0 5px var(--accent-lime),
+				0 0 15px var(--accent-lime),
+				0 0 25px var(--accent-lime); 
+		}
+		100% { 
+			text-shadow: 0 0 5px var(--accent-lime); 
+		}
+	}
+	
+	@keyframes matrix-data-flow {
+		0% { 
+			opacity: 0; 
+			transform: translateY(-20px); 
+		}
+		50% { 
+			opacity: 1; 
+			transform: translateY(0); 
+		}
+		100% { 
+			opacity: 1; 
+			transform: translateY(0); 
+		}
+	}
+	
+	@keyframes final-glow {
+		0% { 
+			border-color: var(--neon-pink);
+			box-shadow: 0 0 10px var(--neon-pink); 
+		}
+		50% { 
+			border-color: var(--neon-pink);
+			box-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink); 
+		}
+		100% { 
+			border-color: var(--neon-pink);
+			box-shadow: 0 0 10px var(--neon-pink); 
+		}
+	}
+	
+	@keyframes ascii-emerge {
+		0% { 
+			opacity: 0; 
+			transform: scale(0.8); 
+		}
+		100% { 
+			opacity: 1; 
+			transform: scale(1); 
+		}
+	}
+	
 	@keyframes matrix-glow {
 		0% { text-shadow: 0 0 10px var(--neon-pink); }
 		100% { text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink); }
+	}
+	
+	@keyframes hack-flicker {
+		0%, 100% { border-color: var(--error-red); background: rgba(20, 0, 0, 0.9); }
+		50% { border-color: #ff6666; background: rgba(40, 0, 0, 0.9); }
+	}
+	
+	@keyframes hack-glitch {
+		0%, 100% { transform: translateX(0); opacity: 1; }
+		20% { transform: translateX(-2px); opacity: 0.8; }
+		40% { transform: translateX(2px); opacity: 0.9; }
+		60% { transform: translateX(-1px); opacity: 0.7; }
+		80% { transform: translateX(1px); opacity: 1; }
+	}
+	
+	@keyframes final-emerge {
+		0% { transform: scale(0.8); opacity: 0; }
+		50% { transform: scale(1.1); }
+		100% { transform: scale(1); opacity: 1; }
+	}
+	
+	@keyframes command-glitch {
+		0%, 100% { text-shadow: 0 0 0 transparent; }
+		50% { text-shadow: -1px 0 0 var(--error-red), 1px 0 0 var(--accent-lime); }
+	}
+	
+	@keyframes text-interference {
+		0%, 100% { opacity: 0.6; }
+		50% { opacity: 0.3; }
+	}
+	
+	@keyframes binary-rain {
+		0% { transform: translateY(-20px); opacity: 0; }
+		50% { opacity: 1; }
+		100% { transform: translateY(0); opacity: 0.8; }
+	}
+	
+	@keyframes cascade-glitch {
+		0%, 100% { transform: translateX(0); }
+		25% { transform: translateX(-2px) skew(-1deg); }
+		75% { transform: translateX(2px) skew(1deg); }
+	}
+	
+	@keyframes gentle-glow {
+		0% { 
+			border-color: rgba(0, 255, 0, 0.2); 
+			box-shadow: 0 0 5px rgba(0, 255, 0, 0.1); 
+		}
+		100% { 
+			border-color: rgba(0, 255, 0, 0.4); 
+			box-shadow: 0 0 15px rgba(0, 255, 0, 0.2); 
+		}
+	}
+	
+	@keyframes fade-in-slow {
+		0% { opacity: 0; transform: translateY(10px); }
+		100% { opacity: 1; transform: translateY(0); }
+	}
+	
+	@keyframes profound-emerge {
+		0% { 
+			opacity: 0; 
+			transform: translateY(20px) scale(0.95); 
+		}
+		70% { 
+			opacity: 0.8; 
+			transform: translateY(5px) scale(1.02); 
+		}
+		100% { 
+			opacity: 1; 
+			transform: translateY(0) scale(1); 
+		}
+	}
+	
+	@keyframes fade-cascade {
+		0% { opacity: 1; transform: translateY(0); }
+		70% { opacity: 0.5; transform: translateY(10px); }
+		100% { opacity: 0; transform: translateY(20px); }
+	}
+	
+	@keyframes pill-choice-appear {
+		0% { opacity: 0; transform: scale(0.9); }
+		100% { opacity: 1; transform: scale(1); }
+	}
+	
+	@keyframes timeout-pulse {
+		0%, 100% { opacity: 0.7; }
+		50% { opacity: 1; color: #ff3333; }
+	}
+	
+	@keyframes blue-fade {
+		0% { opacity: 0; transform: translateY(-10px); }
+		100% { opacity: 1; transform: translateY(0); }
+	}
+	
+	@keyframes countdown-pulse {
+		0%, 100% { transform: scale(1); opacity: 1; }
+		50% { transform: scale(1.1); opacity: 0.8; }
 	}
 	
 	.scan-text {
@@ -1565,6 +2435,104 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		text-shadow: 0 0 5px var(--neon-blue);
 	}
 	
+	/* ASCII Art Headers */
+	.ascii-header {
+		margin: 1rem 0 2rem 0;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.ascii-art {
+		font-family: 'Courier New', monospace;
+		font-size: 10px;
+		line-height: 1.1;
+		color: var(--neon-blue);
+		text-shadow: 
+			0 0 5px currentColor,
+			0 0 10px currentColor;
+		margin: 0;
+		white-space: pre;
+		overflow-x: auto;
+		animation: ascii-glow 3s ease-in-out infinite alternate;
+		display: inline-block;
+		text-align: left;
+	}
+	
+	.ascii-art.robot-art {
+		color: var(--accent-lime);
+		text-shadow: 
+			0 0 5px var(--accent-lime),
+			0 0 10px var(--accent-lime);
+	}
+	
+	.ascii-art.skull-art {
+		color: var(--warning);
+		text-shadow: 
+			0 0 5px var(--warning),
+			0 0 10px var(--warning);
+		animation: skull-pulse 2s ease-in-out infinite alternate;
+	}
+	
+	.ascii-art.code-art {
+		color: var(--neon-pink);
+		text-shadow: 
+			0 0 5px var(--neon-pink),
+			0 0 10px var(--neon-pink);
+		animation: code-flicker 2.5s ease-in-out infinite alternate;
+	}
+	
+	@keyframes ascii-glow {
+		0% {
+			text-shadow: 
+				0 0 5px currentColor,
+				0 0 10px currentColor;
+		}
+		100% {
+			text-shadow: 
+				0 0 8px currentColor,
+				0 0 15px currentColor,
+				0 0 20px currentColor;
+		}
+	}
+	
+	@keyframes skull-pulse {
+		0% {
+			text-shadow: 
+				0 0 5px var(--warning),
+				0 0 10px var(--warning);
+			opacity: 0.9;
+		}
+		100% {
+			text-shadow: 
+				0 0 10px var(--warning),
+				0 0 20px var(--warning),
+				0 0 25px rgba(255, 65, 54, 0.5);
+			opacity: 1;
+		}
+	}
+	
+	@keyframes code-flicker {
+		0% {
+			text-shadow: 
+				0 0 5px var(--neon-pink),
+				0 0 10px var(--neon-pink);
+		}
+		50% {
+			text-shadow: 
+				0 0 8px var(--neon-pink),
+				0 0 15px var(--neon-pink),
+				0 0 20px rgba(255, 20, 147, 0.3);
+		}
+		100% {
+			text-shadow: 
+				0 0 12px var(--neon-pink),
+				0 0 18px var(--neon-pink),
+				0 0 25px rgba(255, 20, 147, 0.5);
+		}
+	}
+	
 	@media (max-width: 768px) {
 		.terminal-container {
 			padding: 1rem 0.5rem;
@@ -1585,6 +2553,25 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		
 		.terminal-body {
 			padding: 1rem;
+		}
+		
+		/* ASCII Art Mobile Optimization */
+		.ascii-header {
+			margin: 0.5rem 0 1.5rem 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.ascii-art {
+			font-size: 7px;
+			line-height: 1;
+			margin: 0;
+			text-align: left;
+			max-width: 90vw;
+			overflow-x: auto;
+			display: inline-block;
 		}
 	}
 </style>
