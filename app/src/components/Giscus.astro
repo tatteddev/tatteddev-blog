@@ -1,0 +1,92 @@
+---
+// Enhanced Giscus wrapper with a cyberpunk/neon container.
+// Uses is:inline to prevent Astro from hoisting the script, so it renders in-place.
+---
+
+<section aria-label="Comments" class="comments-terminal">
+  <div class="comments-header">
+    <div class="controls">
+      <span class="control close"></span>
+      <span class="control minimize"></span>
+      <span class="control maximize"></span>
+    </div>
+    <div class="title">// Comments</div>
+  </div>
+
+  <div class="comments-body">
+    <script
+      is:inline
+      src="https://giscus.app/client.js"
+      data-repo="tatteddev/tatteddev-blog"
+      data-repo-id="R_kgDOP0Cnpg"
+      data-category="Comments"
+      data-category-id="DIC_kwDOP0Cnps4Cv8Ex"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="transparent_dark"
+      data-lang="en"
+      crossorigin="anonymous"
+      async>
+    </script>
+    <noscript>Enable JavaScript to view the comments powered by Giscus.</noscript>
+  </div>
+</section>
+
+<style>
+  .comments-terminal {
+    margin-top: 2.5rem;
+    background: rgba(26, 27, 46, 0.6);
+    border: 1px solid var(--neon-blue);
+    border-radius: 8px;
+    box-shadow:
+      0 0 18px rgba(0, 246, 255, 0.15),
+      inset 0 0 14px rgba(0, 246, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .comments-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--neon-blue);
+    background: linear-gradient(135deg, var(--surface), var(--bg-dark));
+  }
+
+  .controls { display: flex; gap: 0.5rem; }
+  .control { width: 10px; height: 10px; border-radius: 50%; }
+  .control.close { background: #ff5f56; }
+  .control.minimize { background: #ffbd2e; }
+  .control.maximize { background: #27ca3f; }
+
+  .title {
+    font-family: 'Courier New', monospace;
+    color: var(--neutral-mid);
+    text-shadow: 0 0 6px rgba(0, 246, 255, 0.4);
+  }
+
+  .comments-body {
+    padding: 1rem;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 15, 0.4) 0%,
+      rgba(10, 10, 15, 0.6) 100%
+    );
+  }
+
+  /* Subtle neon glow line at the bottom */
+  .comments-terminal::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+    box-shadow: 0 0 12px var(--neon-blue);
+  }
+
+  @media (max-width: 768px) {
+    .comments-body { padding: 0.75rem; }
+  }
+</style>
