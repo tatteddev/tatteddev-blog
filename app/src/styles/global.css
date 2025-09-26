@@ -64,6 +64,18 @@ body {
 	font-size: 20px;
 	line-height: 1.7;
 	min-height: 100vh;
+	overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Prevent horizontal overflow on all elements */
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+/* Ensure images and media don't overflow */
+img, video, iframe, embed, object {
+	max-width: 100%;
+	height: auto;
 }
 main {
 	width: 720px;

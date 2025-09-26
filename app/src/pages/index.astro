@@ -244,7 +244,6 @@ _connection_lost_
 						<div class="about-content">
 							<h2 class="neon-glow-blue">[#] Core Interests & Expertise</h2>
 							<p>Expect posts that dive deep into:</p>
-							<br />
 							<ul class="terminal-list">
 								<li><span class="symbol neon-blue">[*]</span> <strong>Software Engineering</strong> — .NET, SQL, Azure, pipelines, and building scalable systems.</li>
 								<li><span class="symbol accent-lime">[+]</span> <strong>Game Development</strong> — Unity, indie dev grind, and interactive experiences.</li>
@@ -277,11 +276,7 @@ _connection_lost_
     ╚═╝  ╚═╝╚══════╝ ╚═════╝╚══════╝╚═╝  ╚═══╝   ╚═╝       ╚═╝      ╚═════╝ ╚══════╝   ╚═╝   ╚══════╝
 							</pre>
 						</div>
-						<p class="directory-listing">./blog/<a href="/blog/using-mdx" class="file-link">using-mdx.mdx</a></p>
-						<p class="directory-listing">./blog/<a href="/blog/third-post" class="file-link">third-post.md</a></p>
-						<p class="directory-listing">./blog/<a href="/blog/second-post" class="file-link">second-post.md</a></p>
-						<p class="directory-listing">./blog/<a href="/blog/first-post" class="file-link">first-post.md</a></p>
-						<p class="directory-listing">./blog/<a href="/blog/markdown-style-guide" class="file-link">markdown-style-guide.md</a></p>
+						<p class="directory-listing">./blog/<a href="/blog/who-is-tatted-dev" class="file-link">who-is-tatted-dev.md</a></p>
 						<br />
 						<p class="neon-text">→ <a href="/blog" class="file-link">View all posts in ./blog/</a></p>
 					</div>
@@ -520,84 +515,86 @@ _connection_lost_
 			
 			async function enterTheMatrix() {
 				// Pause for dramatic effect
-				await new Promise(resolve => setTimeout(resolve, 1000));
+				await new Promise(resolve => setTimeout(resolve, 400));
 				
 				// Binary Cascade 1 - brief and subtle
-				await showElement('binary-cascade-1', 600);
+				await showElement('binary-cascade-1', 400);
 				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 2000));
+				await new Promise(resolve => setTimeout(resolve, 800));
 				
 				// Matrix Initialization - Slow and deliberate
-				await showElement('matrix-init', 800);
+				await showElement('matrix-init', 500);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 600));
+				
+				await showElement('init-line-1', 600);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 800));
+				
+				await showElement('init-line-2', 600);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 1000));
+				
+				await showElement('init-line-3', 600);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 1200));
+				
+				await showElement('init-line-4', 600);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 1000));
+				
+				// Binary Cascade 2 - transition moment
+				await showElement('binary-cascade-2', 400);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 800));
+				
+				// Matrix Awakening - The profound moment
+				await showElement('matrix-awakening', 800);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 1000));
+				
+				await showElement('awaken-line-1', 1000);
 				scrollToBottom();
 				await new Promise(resolve => setTimeout(resolve, 1500));
 				
-				await showElement('init-line-1', 1000);
+				await showElement('awaken-line-2', 1000);
 				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 2000));
+				await new Promise(resolve => setTimeout(resolve, 1200));
 				
-				await showElement('init-line-2', 1000);
+				await showElement('awaken-line-3', 1000);
 				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 2500));
-				
-				await showElement('init-line-3', 1000);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 3000));
-				
-				await showElement('init-line-4', 1000);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 2500));
-				
-				// Binary Cascade 2 - transition moment
-				await showElement('binary-cascade-2', 600);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 2000));
-				
-				// Matrix Awakening - The profound moment
-				await showElement('matrix-awakening', 1200);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 2000));
-				
-				await showElement('awaken-line-1', 1500);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 3000));
-				
-				await showElement('awaken-line-2', 1500);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 2500));
-				
-				await showElement('awaken-line-3', 1500);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 3000));
+				await new Promise(resolve => setTimeout(resolve, 1500));
 				
 				await showElement('awaken-break', 200);
-				await showElement('awaken-line-4', 2000);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 4000));
-				
-				await showElement('awaken-break-2', 200);
-				await showElement('awaken-line-5', 2000);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 3000));
-				
-				// Continue with regular installation
-				await showElement('matrix-line-6', 600);
-				scrollToBottom();
-				await showElement('matrix-line-7', 500);
-				scrollToBottom();
-				await showElement('matrix-line-8', 600);
-				scrollToBottom();
-				await showElement('matrix-break-3', 400);
-				
-				// Final Matrix Quote
-				await showElement('matrix-final', 1200);
+				await showElement('awaken-line-4', 1200);
 				scrollToBottom();
 				await new Promise(resolve => setTimeout(resolve, 2000));
 				
-				// Final Binary Cascade (connection lost)
-				await showElement('final-cascade', 800);
+				await showElement('awaken-break-2', 200);
+				await showElement('awaken-line-5', 1200);
 				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 3000));
+				await new Promise(resolve => setTimeout(resolve, 1500));
+				
+				// Continue with regular installation
+				await showElement('matrix-line-6', 400);
+				scrollToBottom();
+				await showElement('matrix-line-7', 300);
+				scrollToBottom();
+				await showElement('matrix-line-8', 400);
+				scrollToBottom();
+				await showElement('matrix-break-3', 300);
+				
+				// Final Matrix Quote
+				await showElement('matrix-final', 800);
+				scrollToBottom();
+				await new Promise(resolve => setTimeout(resolve, 1000));
+				
+				// Final Binary Cascade (connection lost)
+				await showElement('final-cascade', 500);
+				scrollToBottom();
+				// Wait for cascade animation to complete (4s) then hide it
+				await new Promise(resolve => setTimeout(resolve, 4200));
+				hideElement('final-cascade');
 				
 				// Continue with regular sections
 				await showElement('cmd-7', commands[2].delay);
@@ -1890,9 +1887,9 @@ _connection_lost_
 	}
 	
 	.red-pill {
-		color: var(--error-red);
+		color: #ff3333;
 		font-weight: bold;
-		text-shadow: 0 0 5px var(--error-red);
+		text-shadow: 0 0 5px #ff3333;
 	}
 	
 	.pill-buttons {
@@ -1927,14 +1924,14 @@ _connection_lost_
 	}
 	
 	.red-choice {
-		border-color: var(--error-red);
-		color: var(--error-red);
+		border-color: #ff3333;
+		color: #ff3333;
 	}
 	
 	.red-choice:hover {
-		background: var(--error-red);
+		background: #ff3333;
 		color: black;
-		box-shadow: 0 0 20px var(--error-red);
+		box-shadow: 0 0 20px #ff3333;
 	}
 	
 	.choice-timeout {
@@ -2213,9 +2210,10 @@ _connection_lost_
 	}
 	
 	@keyframes fade-cascade {
-		0% { opacity: 1; transform: translateY(0); }
-		70% { opacity: 0.5; transform: translateY(10px); }
-		100% { opacity: 0; transform: translateY(20px); }
+		0% { opacity: 1; transform: translateY(0); height: auto; margin: 1.5rem 0; }
+		70% { opacity: 0.5; transform: translateY(10px); height: auto; margin: 1.5rem 0; }
+		90% { opacity: 0; transform: translateY(20px); height: auto; margin: 1.5rem 0; }
+		100% { opacity: 0; transform: translateY(20px); height: 0; margin: 0; }
 	}
 	
 	@keyframes pill-choice-appear {
@@ -2555,6 +2553,17 @@ _connection_lost_
 			padding: 1rem;
 		}
 		
+		/* Pill buttons mobile optimization */
+		.pill-button {
+			padding: 0.75rem 1.5rem;
+			font-size: 0.9rem;
+			min-width: 120px;
+		}
+		
+		.pill-buttons {
+			gap: 1rem;
+		}
+		
 		/* ASCII Art Mobile Optimization */
 		.ascii-header {
 			margin: 0.5rem 0 1.5rem 0;
@@ -2562,16 +2571,47 @@ _connection_lost_
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			width: 100%;
+		}
+		
+		.ascii-section-header {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0.5rem auto;
+			padding: 0.5rem;
+			width: calc(100% - 1rem);
+			max-width: 100%;
+			text-align: center;
+			box-sizing: border-box;
+			overflow: hidden;
 		}
 		
 		.ascii-art {
-			font-size: 7px;
+			font-size: 6px;
 			line-height: 1;
-			margin: 0;
-			text-align: left;
-			max-width: 90vw;
+			margin: 0 auto;
+			text-align: center;
+			max-width: 95vw;
 			overflow-x: auto;
-			display: inline-block;
+			display: block;
+		}
+		
+		.section-ascii {
+			font-size: 5px;
+			line-height: 0.8;
+			text-align: center;
+			max-width: 100vw;
+			overflow-x: auto;
+			margin: 0 auto;
+			display: block;
+			width: fit-content;
+		}
+		
+		/* Recent posts mobile fix */
+		.blog-ascii {
+			font-size: 4px;
+			line-height: 0.8;
 		}
 	}
 </style>
