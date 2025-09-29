@@ -451,7 +451,24 @@ _connection_lost_
 					// Update countdown display
 					function updateCountdown() {
 						if (countdownTimer && countdown > 0) {
-							countdownTimer.textContent = countdown;
+							// Force a repaint on mobile devices
+							countdownTimer.style.opacity = '0.99';
+							setTimeout(() => {
+								if (countdownTimer) {
+									countdownTimer.textContent = countdown;
+									countdownTimer.style.opacity = '1';
+								}
+							}, 10);
+							countdown--;
+						} else if (countdownTimer && countdown === 0) {
+							// Ensure 0 is displayed before stopping
+							countdownTimer.style.opacity = '0.99';
+							setTimeout(() => {
+								if (countdownTimer) {
+									countdownTimer.textContent = '0';
+									countdownTimer.style.opacity = '1';
+								}
+							}, 10);
 							countdown--;
 						}
 					}
@@ -1962,6 +1979,11 @@ _connection_lost_
 		font-size: 1.2rem;
 		text-shadow: 0 0 5px var(--error-red);
 		animation: countdown-pulse 1s ease-in-out infinite;
+		display: inline-block;
+		min-width: 1.5rem;
+		text-align: center;
+		vertical-align: baseline;
+		line-height: 1;
 	}
 	
 	.blue-pill-ending {
@@ -2553,6 +2575,23 @@ _connection_lost_
 			padding: 1rem;
 		}
 		
+		/* Pill choice container mobile optimization */
+		.pill-choice-container {
+			margin: 1rem 0;
+			padding: 1rem;
+			/* Ensure it fits within viewport */
+			max-width: 100%;
+			box-sizing: border-box;
+			/* Prevent horizontal overflow */
+			overflow-x: hidden;
+		}
+		
+		.morpheus-text {
+			font-size: 0.9rem;
+			line-height: 1.5;
+			margin: 0.75rem 0;
+		}
+		
 		/* Pill buttons mobile optimization */
 		.pill-button {
 			padding: 0.75rem 1.5rem;
@@ -2562,6 +2601,7 @@ _connection_lost_
 		
 		.pill-buttons {
 			gap: 1rem;
+			flex-wrap: wrap;
 		}
 		
 		/* ASCII Art Mobile Optimization */
@@ -2612,6 +2652,54 @@ _connection_lost_
 		.blog-ascii {
 			font-size: 4px;
 			line-height: 0.8;
+		}
+		
+		/* Countdown timer mobile fixes */
+		.countdown-timer {
+			font-size: 1.2rem !important;
+			min-width: 1.5rem;
+			-webkit-text-stroke: 0.5px var(--error-red);
+			font-family: 'Courier New', monospace;
+			font-weight: 900;
+			display: inline-block;
+			text-align: center;
+			/* Prevent text from disappearing on mobile */
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			/* Ensure it stays visible */
+			opacity: 1 !important;
+			visibility: visible !important;
+			/* Prevent overflow */
+			max-width: 2rem;
+			overflow: hidden;
+			/* Fix vertical alignment */
+			vertical-align: baseline;
+			line-height: 1;
+		}
+		
+		.countdown-text {
+			font-size: 0.85rem;
+			/* Allow wrapping on mobile */
+			white-space: normal;
+			text-align: center;
+			line-height: 1.4;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.countdown-container {
+			/* Ensure container doesn't collapse */
+			min-height: 3rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			/* Ensure it fits within viewport */
+			max-width: 100%;
+			margin: 1rem auto;
+			padding: 0.75rem;
+			box-sizing: border-box;
+			/* Prevent overflow */
+			overflow: hidden;
 		}
 	}
 </style>
