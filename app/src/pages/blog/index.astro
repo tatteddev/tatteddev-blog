@@ -399,39 +399,7 @@ const posts = (await getCollection('blog')).sort(
 				text-shadow: 0 0 5px rgba(182, 255, 0, 0.5);
 			}
 
-			/* Featured Post (First Post) */
-			.post-card.featured {
-				/* Keep consistent footprint with a subtle accent */
-				grid-column: auto;
-				border-color: var(--neon-pink);
-				box-shadow: 0 0 30px rgba(255, 0, 212, 0.2);
-			}
 
-			/* Make the inner link the grid container so image and content split 50/50 */
-			.post-card.featured .post-card-link {
-				min-height: 280px;
-			}
-
-			/* Remove unused featured image element rules */
-
-			.featured .post-content {
-				padding: 1rem;
-			}
-
-			.featured .post-title {
-				font-size: 1.25rem;
-				color: var(--neon-pink);
-				text-shadow: 0 0 10px rgba(255, 0, 212, 0.5);
-				margin-bottom: 0.5rem;
-			}
-
-			.featured .post-description {
-				font-size: 0.95rem;
-				line-height: 1.5;
-				color: var(--neutral-light);
-				margin-bottom: 0.65rem;
-				-webkit-line-clamp: 3;
-			}
 
 			/* Improve contrast for text inside image background */
 			.post-title,
@@ -451,10 +419,7 @@ const posts = (await getCollection('blog')).sort(
 				border: 1px solid rgba(255, 0, 212, 0.35);
 			}
 
-			.featured .post-date {
-				font-size: 0.9rem;
-				margin-bottom: 0.75rem;
-			}
+
 
 
 
@@ -600,27 +565,9 @@ const posts = (await getCollection('blog')).sort(
 					width: 100%;
 				}
 
-				.post-card.featured {
-					width: 100%;
-				}
 
-				/* Ensure featured layout stacks on mobile */
-				.post-card.featured .post-card-link {
-					display: block;
-				}
 
-				.featured .post-image-container {
-					height: 180px;
-					width: 100%;
-				}
 
-				.featured .post-content {
-					padding: 1.25rem;
-				}
-
-				.featured .post-title {
-					font-size: 1.3rem;
-				}
 
 				.post-content {
 					padding: 0.75rem;
@@ -704,7 +651,6 @@ const posts = (await getCollection('blog')).sort(
 					padding: 1rem;
 				}
 
-				.featured .post-content,
 				.post-content {
 					padding: 0.75rem;
 				}
@@ -756,10 +702,8 @@ const posts = (await getCollection('blog')).sort(
 
 					<div class="filter-buttons">
 						<button class="filter-btn active" data-filter="all">All Posts</button>
-						<button class="filter-btn" data-filter="dev">Development</button>
-						<button class="filter-btn" data-filter="tutorial">Tutorials</button>
-						<button class="filter-btn" data-filter="tech">Tech</button>
-						<button class="filter-btn" data-filter="project">Projects</button>
+						<button class="filter-btn" data-filter="Development">Development</button>
+						<button class="filter-btn" data-filter="Projects">Projects</button>
 					</div>
 
 					<div class="sort-controls">
@@ -777,7 +721,7 @@ const posts = (await getCollection('blog')).sort(
 						{
 							posts.map((post, index) => (
 								<li 
-									class={`post-card ${index === 0 ? 'featured' : ''}`}
+									class="post-card"
 									data-title={post.data.title.toLowerCase()}
 									data-description={post.data.description?.toLowerCase() || ''}
 									data-date={post.data.pubDate.valueOf()}
@@ -919,18 +863,6 @@ const posts = (await getCollection('blog')).sort(
 					// Update post count
 					postCount.textContent = visiblePosts.length.toString();
 
-					// Handle featured post class
-					updateFeaturedPost(visiblePosts);
-				}
-
-				function updateFeaturedPost(visiblePosts: HTMLElement[]) {
-					// Remove featured class from all posts
-					allPosts.forEach((post: HTMLElement) => post.classList.remove('featured'));
-					
-					// Add featured class to first visible post if there are visible posts
-					if (visiblePosts.length > 0) {
-						visiblePosts[0].classList.add('featured');
-					}
 				}
 
 				// Add keyboard shortcut for search (Ctrl/Cmd + K)

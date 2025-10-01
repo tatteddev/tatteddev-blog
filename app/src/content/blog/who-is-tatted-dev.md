@@ -3,7 +3,7 @@ title: 'Who is Tatted Dev?'
 description: 'Welcome to my little corner of the internet. An introduction to who I am, what I build, and what this blog is all about.'
 pubDate: 'Sep 26 2025'
 heroImage: '../../assets/tatteddev.png'
-category: 'personal'
+category: 'Projects'
 tags: ['introduction', 'personal', 'about', 'indie-dev']
 ---
 
