@@ -10,6 +10,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+// Aggregate unique tags for filter chips
+const allTags = Array.from(
+	new Set(
+		posts
+			.flatMap((p) => p.data.tags || [])
+			.map((t) => t.trim())
+			.filter(Boolean)
+	)
+).sort((a, b) => a.localeCompare(b));
 ---
 
 <!doctype html>
@@ -706,6 +716,15 @@ const posts = (await getCollection('blog')).sort(
 						<button class="filter-btn" data-filter="Projects">Projects</button>
 					</div>
 
+					<!-- Tag filter chips -->
+					{allTags.length > 0 && (
+						<div class="filter-buttons" id="tag-chips" style="margin-top: 0.5rem;">
+							{allTags.map((tag) => (
+								<button class="filter-btn" data-tag={tag.toLowerCase()}>{tag}</button>
+							))}
+						</div>
+					)}
+
 					<div class="sort-controls">
 						<select id="sort-select" class="sort-select">
 							<option value="date-desc">Newest First</option>
@@ -773,6 +792,7 @@ const posts = (await getCollection('blog')).sort(
 			document.addEventListener('DOMContentLoaded', function() {
 				const searchInput = document.getElementById('search-input') as HTMLInputElement;
 				const filterButtons = document.querySelectorAll('.filter-btn') as NodeListOf<HTMLButtonElement>;
+				const tagChips = document.querySelectorAll('#tag-chips .filter-btn') as NodeListOf<HTMLButtonElement>;
 				const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
 				const postsGrid = document.getElementById('posts-grid') as HTMLElement;
 				const postCount = document.getElementById('post-count') as HTMLElement;
@@ -783,20 +803,36 @@ const posts = (await getCollection('blog')).sort(
 
 				let currentFilter = 'all';
 				let currentSort = 'date-desc';
+				let currentTag: string | null = null;
 
 				// Search functionality
 				searchInput.addEventListener('input', function() {
 					filterAndSort();
 				});
 
-				// Filter button functionality
+				// Category filter button functionality
 				filterButtons.forEach((button: HTMLButtonElement) => {
 					button.addEventListener('click', function() {
 						// Remove active class from all buttons
 						filterButtons.forEach(btn => btn.classList.remove('active'));
+						tagChips.forEach(btn => btn.classList.remove('active'));
 						// Add active class to clicked button
 						this.classList.add('active');
 						currentFilter = this.dataset.filter || 'all';
+						currentTag = null; // reset tag when category changes
+						filterAndSort();
+					});
+				});
+
+				// Tag chip functionality
+				tagChips.forEach((button: HTMLButtonElement) => {
+					button.addEventListener('click', function() {
+						// Toggle active state for tags and clear category selection
+						filterButtons.forEach(btn => btn.classList.remove('active'));
+						tagChips.forEach(btn => btn.classList.remove('active'));
+						this.classList.add('active');
+						currentTag = (this.dataset.tag || '').toLowerCase();
+						currentFilter = 'all';
 						filterAndSort();
 					});
 				});
@@ -826,12 +862,15 @@ const posts = (await getCollection('blog')).sort(
 
 						// Category filter - check category, tags, and content
 						const matchesCategory = currentFilter === 'all' || 
-							category === currentFilter ||
-							tags.includes(currentFilter) ||
-							title.includes(currentFilter) ||
-							description.includes(currentFilter);
+							category.toLowerCase() === currentFilter.toLowerCase() ||
+							tags.includes(currentFilter.toLowerCase()) ||
+							title.includes(currentFilter.toLowerCase()) ||
+							description.includes(currentFilter.toLowerCase());
 
-						if (matchesSearch && matchesCategory) {
+						// Tag filter - if a tag chip is selected, require it to be present
+						const matchesTag = !currentTag || tags.includes(currentTag);
+
+						if (matchesSearch && matchesCategory && matchesTag) {
 							visiblePosts.push(post);
 							post.style.display = 'block';
 						} else {
