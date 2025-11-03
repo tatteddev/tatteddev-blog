@@ -353,7 +353,19 @@ _connection_lost_
 			
 			function showElement(elementId, delay = 0) {
 				return new Promise((resolve) => {
+					// If animation is skipped, resolve immediately
+					if (animationSkipped) {
+						resolve();
+						return;
+					}
+					
 					setTimeout(() => {
+						// Check again after delay
+						if (animationSkipped) {
+							resolve();
+							return;
+						}
+						
 						const element = document.getElementById(elementId);
 						if (element) {
 							element.style.display = 'block';
@@ -571,52 +583,73 @@ _connection_lost_
 			}
 			
 			async function continueNormalSequence() {
-				// Normal installation without Matrix effects
-				await showElement('matrix-line-6', 600);
-				scrollToBottom();
-				await showElement('matrix-line-7', 500);
-				scrollToBottom();
-				await showElement('matrix-line-8', 600);
-				scrollToBottom();
-				await showElement('matrix-break-3', 400);
-				
-				// Continue with regular sections
-				await showElement('cmd-7', commands[2].delay);
-				await typeText('cat-cmd', commands[2].text, 90);
-				hideCursor('cursor-7');
-				await showElement('output-7', 400);
-				scrollToBottom();
-				
-				// Command 4: cat interests.txt
-				await showElement('cmd-8', commands[3].delay);
-				await typeText('interests-cmd', commands[3].text, 85);
-				hideCursor('cursor-8');
-				await showElement('output-8', 500);
-				scrollToBottom();
-				
-				// Command 5: recent posts
-				await showElement('cmd-9', commands[4].delay);
-				await typeText('recent-cmd', commands[4].text, 70);
-				hideCursor('cursor-9');
-				await showElement('output-9', 400);
-				scrollToBottom();
-				
-				// Final prompt
-				await showElement('final-prompt', 800);
-				
-				// Hide skip button
-				const skipBtn = document.getElementById('skip-init');
-				if (skipBtn) skipBtn.classList.add('hidden');
+				try {
+					// Normal installation without Matrix effects
+					await showElement('matrix-line-6', 600);
+					if (animationSkipped) return;
+					scrollToBottom();
+					await showElement('matrix-line-7', 500);
+					if (animationSkipped) return;
+					scrollToBottom();
+					await showElement('matrix-line-8', 600);
+					if (animationSkipped) return;
+					scrollToBottom();
+					await showElement('matrix-break-3', 400);
+					if (animationSkipped) return;
+					
+					// Continue with regular sections
+					await showElement('cmd-7', commands[2].delay);
+					if (animationSkipped) return;
+					await typeText('cat-cmd', commands[2].text, 90);
+					if (animationSkipped) return;
+					hideCursor('cursor-7');
+					await showElement('output-7', 400);
+					if (animationSkipped) return;
+					scrollToBottom();
+					
+					// Command 4: cat interests.txt
+					await showElement('cmd-8', commands[3].delay);
+					if (animationSkipped) return;
+					await typeText('interests-cmd', commands[3].text, 85);
+					if (animationSkipped) return;
+					hideCursor('cursor-8');
+					await showElement('output-8', 500);
+					if (animationSkipped) return;
+					scrollToBottom();
+					
+					// Command 5: recent posts
+					await showElement('cmd-9', commands[4].delay);
+					if (animationSkipped) return;
+					await typeText('recent-cmd', commands[4].text, 70);
+					if (animationSkipped) return;
+					hideCursor('cursor-9');
+					await showElement('output-9', 400);
+					if (animationSkipped) return;
+					scrollToBottom();
+					
+					// Final prompt
+					await showElement('final-prompt', 800);
+					
+					// Hide skip button
+					const skipBtn = document.getElementById('skip-init');
+					if (skipBtn) skipBtn.classList.add('hidden');
+				} catch (e) {
+					// Animation was skipped
+				}
 			}
 			
 			async function enterTheMatrix() {
-				// Pause for dramatic effect
-				await new Promise(resolve => setTimeout(resolve, 400));
-				
-				// Binary Cascade 1 - brief and subtle
-				await showElement('binary-cascade-1', 400);
-				scrollToBottom();
-				await new Promise(resolve => setTimeout(resolve, 800));
+				try {
+					// Pause for dramatic effect
+					await new Promise(resolve => setTimeout(resolve, 400));
+					if (animationSkipped) return;
+					
+					// Binary Cascade 1 - brief and subtle
+					await showElement('binary-cascade-1', 400);
+					if (animationSkipped) return;
+					scrollToBottom();
+					await new Promise(resolve => setTimeout(resolve, 800));
+					if (animationSkipped) return;
 				
 				// Matrix Initialization - Slow and deliberate
 				await showElement('matrix-init', 500);
@@ -711,14 +744,17 @@ _connection_lost_
 				await typeText('recent-cmd', commands[4].text, 70);
 				hideCursor('cursor-9');
 				await showElement('output-9', 400);
-				scrollToBottom();
-				
-				// Final prompt
-				await showElement('final-prompt', 800);
-				
-				// Hide skip button
-				const skipBtn = document.getElementById('skip-init');
-				if (skipBtn) skipBtn.classList.add('hidden');
+					scrollToBottom();
+					
+					// Final prompt
+					await showElement('final-prompt', 800);
+					
+					// Hide skip button
+					const skipBtn = document.getElementById('skip-init');
+					if (skipBtn) skipBtn.classList.add('hidden');
+				} catch (e) {
+					// Animation was skipped
+				}
 			}
 			
 			// System Monitoring Animation
