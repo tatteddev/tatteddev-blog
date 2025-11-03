@@ -4,7 +4,7 @@ description: 'How I avoided the "Common library" trap and built a package ecosys
 pubDate: 'Oct 01 2025'
 heroImage: '../../assets/abstractions.png'
 category: 'Development'
-tags: ['software-architecture', 'packages', 'abstractions', 'scaling', 'honeydrunk']
+tags: ['architecture', 'dotnet']
 ---
 
 When you're building something big, it's easy to fall into the "just toss it into Common" trap. You know the one — a giant "Shared" library where every random helper, DTO, and extension method ends up living rent-free. That's fine until you wake up one day and realize you've created a god-class library that nobody understands and everybody hates.

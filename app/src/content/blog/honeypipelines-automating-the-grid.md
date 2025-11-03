@@ -3,7 +3,7 @@ title: 'HoneyDrunk.Pipelines — Automating the Grid'
 description: 'Behind the scenes of building HoneyDrunk.Pipelines: reusable YAML templates, centralized CI/CD, and turning pipeline chaos into infrastructure-as-code.'
 pubDate: 'Oct 11 2025'
 heroImage: '../../assets/neon-pipeline.png'
-tags: ['azure devops', 'pipelines', 'yaml', 'nuget', 'dotnet', 'ci/cd', 'artifacts', 'templates', 'automation']
+tags: ['devops', 'azure', 'dotnet']
 ---
 
 ## This Week in The Hive

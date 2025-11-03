@@ -1,8 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+// Get the latest 3 blog posts sorted by date
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 ---
 
 <!doctype html>
@@ -62,6 +68,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 							<span class="monitor-value" id="net-value">23%</span>
 						</div>
 					</div>
+					
+					<!-- Skip Button -->
+					<button id="skip-init" class="skip-button" title="Skip initialization">
+						<span class="skip-icon">⏭</span> Skip
+					</button>
 				</div>
 				<div class="terminal-body" id="terminal-body">
 					<!-- Initial loading state -->
@@ -276,7 +287,9 @@ _connection_lost_
     ╚═╝  ╚═╝╚══════╝ ╚═════╝╚══════╝╚═╝  ╚═══╝   ╚═╝       ╚═╝      ╚═════╝ ╚══════╝   ╚═╝   ╚══════╝
 							</pre>
 						</div>
-						<p class="directory-listing">./blog/<a href="/blog/who-is-tatted-dev" class="file-link">who-is-tatted-dev.md</a></p>
+						{posts.map((post) => (
+							<p class="directory-listing">./blog/<a href={`/blog/${post.id}`} class="file-link">{post.id}.md</a></p>
+						))}
 						<br />
 						<p class="neon-text">→ <a href="/blog" class="file-link">View all posts in ./blog/</a></p>
 					</div>
@@ -294,6 +307,8 @@ _connection_lost_
 		<script is:inline>
 			// Terminal animation sequence
 			let currentStep = 0;
+			let animationSkipped = false; // Flag to stop animation when skip is clicked
+			
 			const commands = [
 				{ element: 'whoami-cmd', text: 'whoami', delay: 1200 },
 				{ element: 'nmap-cmd', text: 'upl0ad --neural tatteddev_skil1s.pkg', delay: 1800 },
@@ -304,6 +319,12 @@ _connection_lost_
 			
 			function typeText(elementId, text, speed = 100) {
 				return new Promise((resolve) => {
+					// If animation is skipped, resolve immediately
+					if (animationSkipped) {
+						resolve();
+						return;
+					}
+					
 					const element = document.getElementById(elementId);
 					if (!element) {
 						resolve();
@@ -312,6 +333,13 @@ _connection_lost_
 					
 					let i = 0;
 					const typeInterval = setInterval(() => {
+						// Check if skipped during typing
+						if (animationSkipped) {
+							clearInterval(typeInterval);
+							resolve();
+							return;
+						}
+						
 						if (i < text.length) {
 							element.textContent += text.charAt(i);
 							i++;
@@ -349,18 +377,59 @@ _connection_lost_
 				}
 			}
 			
+			// Track if user has manually scrolled
+			let userHasScrolled = false;
+			let lastScrollTop = 0;
+			
+			// Detect user scrolling up
+			window.addEventListener('scroll', () => {
+				const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+				
+				// If user scrolled up, set the flag
+				if (currentScrollTop < lastScrollTop) {
+					userHasScrolled = true;
+				}
+				
+				// If user scrolled near the bottom, allow auto-scroll again
+				const isNearBottom = (window.innerHeight + currentScrollTop) >= (document.body.scrollHeight - 100);
+				if (isNearBottom) {
+					userHasScrolled = false;
+				}
+				
+				lastScrollTop = currentScrollTop;
+			});
+			
 			function scrollToBottom() {
-				window.scrollTo({
-					top: document.body.scrollHeight,
-					behavior: 'smooth'
-				});
+				// Only auto-scroll if user hasn't manually scrolled up
+				if (!userHasScrolled) {
+					window.scrollTo({
+						top: document.body.scrollHeight,
+						behavior: 'smooth'
+					});
+				}
+			}
+			
+			// Helper to check if animation should continue
+			async function delay(ms) {
+				if (animationSkipped) return;
+				await new Promise(resolve => setTimeout(resolve, ms));
+				if (animationSkipped) throw new Error('Animation skipped');
 			}
 			
 			async function startAnimation() {
+				try {
+				// Check if skipped before starting
+				if (animationSkipped) return;
+				
 				// Initial loading sequence
 				await new Promise(resolve => setTimeout(resolve, 600));
+				if (animationSkipped) return;
+				
 				await showElement('line-1', 400);
+				if (animationSkipped) return;
+				
 				await showElement('line-2', 600);
+				if (animationSkipped) return;
 				
 				// Hide loading lines
 				setTimeout(() => {
@@ -410,16 +479,22 @@ _connection_lost_
 				// Wait for user choice or timeout
 				const userChoice = await waitForPillChoice();
 				
-				if (userChoice === 'blue') {
-					// Blue pill ending - stay in normal world
-					await showElement('blue-pill-ending', 600);
-					scrollToBottom();
-					await new Promise(resolve => setTimeout(resolve, 3000));
-					// Continue with normal installation without Matrix stuff
-					await continueNormalSequence();
-				} else {
-					// Red pill or timeout - go into the Matrix
-					await enterTheMatrix();
+					if (userChoice === 'blue') {
+						// Blue pill ending - stay in normal world
+						await showElement('blue-pill-ending', 600);
+						scrollToBottom();
+						await new Promise(resolve => setTimeout(resolve, 3000));
+						// Continue with normal installation without Matrix stuff
+						await continueNormalSequence();
+					} else {
+						// Red pill or timeout - go into the Matrix
+						await enterTheMatrix();
+					}
+				} catch (e) {
+					// Animation was skipped, do nothing
+					if (e.message !== 'Animation skipped') {
+						console.error(e);
+					}
 				}
 			}
 			
@@ -528,6 +603,10 @@ _connection_lost_
 				
 				// Final prompt
 				await showElement('final-prompt', 800);
+				
+				// Hide skip button
+				const skipBtn = document.getElementById('skip-init');
+				if (skipBtn) skipBtn.classList.add('hidden');
 			}
 			
 			async function enterTheMatrix() {
@@ -636,6 +715,10 @@ _connection_lost_
 				
 				// Final prompt
 				await showElement('final-prompt', 800);
+				
+				// Hide skip button
+				const skipBtn = document.getElementById('skip-init');
+				if (skipBtn) skipBtn.classList.add('hidden');
 			}
 			
 			// System Monitoring Animation
@@ -692,8 +775,83 @@ _connection_lost_
 				setTimeout(triggerRandomGlitch, nextGlitch);
 			}
 
+			// Skip initialization function
+			function skipToEnd() {
+				// Set the skip flag to stop any running animations
+				animationSkipped = true;
+				
+				// Hide all intermediate steps
+				for (let i = 0; i <= 9; i++) {
+					const cmdElement = document.getElementById(`cmd-${i}`);
+					const outputElement = document.getElementById(`output-${i}`);
+					const cursorElement = document.getElementById(`cursor-${i}`);
+					
+					if (cmdElement) cmdElement.style.display = 'block';
+					if (outputElement) outputElement.style.display = 'block';
+					if (cursorElement) cursorElement.style.display = 'none';
+				}
+				
+				// Show all command text immediately
+				commands.forEach(cmd => {
+					const element = document.getElementById(cmd.element);
+					if (element) element.textContent = cmd.text;
+				});
+				
+				// Hide loading lines
+				hideElement('line-0');
+				hideElement('line-1');
+				hideElement('line-2');
+				
+				// Hide pill choice
+				hideElement('pill-choice');
+				
+				// Hide all matrix sequence elements (binary cascades, init, awakening)
+				const matrixSequenceElements = [
+					'binary-cascade-1', 'binary-cascade-2',
+					'matrix-init', 'init-line-1', 'init-line-2', 'init-line-3', 'init-line-4',
+					'matrix-awakening', 'awaken-line-1', 'awaken-line-2', 'awaken-line-3', 
+					'awaken-break', 'awaken-line-4', 'awaken-break-2', 'awaken-line-5'
+				];
+				matrixSequenceElements.forEach(id => hideElement(id));
+				
+				// Show basic matrix lines (skip the dramatic sequence)
+				const basicMatrixLines = [
+					'matrix-line-1', 'matrix-line-2', 'matrix-line-3', 'matrix-break-1', 
+					'matrix-line-4', 'matrix-break-2', 'matrix-line-5',
+					'matrix-line-6', 'matrix-line-7', 'matrix-line-8', 'matrix-break-3'
+				];
+				basicMatrixLines.forEach(id => showElement(id, 0));
+				
+				// Complete the progress bar immediately
+				const progressBar = document.querySelector('.progress-fill');
+				if (progressBar) {
+					progressBar.style.animation = 'none';
+					progressBar.style.width = '100%';
+				}
+				const progressPercent = document.querySelector('.progress-percent');
+				if (progressPercent) {
+					progressPercent.textContent = '100%';
+				}
+				
+				// Show final prompt
+				showElement('final-prompt', 0);
+				
+				// Hide the skip button
+				const skipBtn = document.getElementById('skip-init');
+				if (skipBtn) skipBtn.classList.add('hidden');
+				
+				// Scroll to bottom
+				scrollToBottom();
+			}
+
 			// Start animation when page loads
 			window.addEventListener('load', () => {
+				// Set up skip button
+				const skipBtn = document.getElementById('skip-init');
+				if (skipBtn) {
+					skipBtn.addEventListener('click', skipToEnd);
+				}
+				
 				setTimeout(startAnimation, 500);
 				setTimeout(startSystemMonitoring, 1000);
 				setTimeout(triggerRandomGlitch, 10000); // First glitch after 10 seconds
@@ -819,6 +977,15 @@ _connection_lost_
 		
 		.terminal-header .system-monitors {
 			display: none !important;
+		}
+		
+		.skip-button {
+			font-size: 10px;
+			padding: 0.3rem 0.6rem;
+		}
+		
+		.skip-icon {
+			font-size: 12px;
 		}
 	}
 
@@ -1328,6 +1495,43 @@ _connection_lost_
 		25% { width: 50%; opacity: 1; }
 		50% { width: 30%; opacity: 0.8; }
 		75% { width: 80%; opacity: 1; }
+	}
+
+	/* Skip Button */
+	.skip-button {
+		background: rgba(0, 246, 255, 0.1);
+		border: 1px solid var(--neon-blue);
+		color: var(--neon-blue);
+		padding: 0.4rem 0.8rem;
+		border-radius: 4px;
+		font-size: 11px;
+		font-weight: bold;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+		transition: all 0.3s ease;
+		text-shadow: 0 0 5px var(--neon-blue);
+		box-shadow: 0 0 10px rgba(0, 246, 255, 0.2);
+	}
+
+	.skip-button:hover {
+		background: rgba(0, 246, 255, 0.2);
+		box-shadow: 0 0 15px rgba(0, 246, 255, 0.4);
+		transform: translateY(-1px);
+	}
+
+	.skip-button:active {
+		transform: translateY(0);
+		box-shadow: 0 0 8px rgba(0, 246, 255, 0.3);
+	}
+
+	.skip-icon {
+		font-size: 14px;
+	}
+
+	.skip-button.hidden {
+		display: none;
 	}
 	
 	.terminal-body {

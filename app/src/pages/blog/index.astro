@@ -119,6 +119,38 @@ const allTags = Array.from(
 				border: 1px solid rgba(182, 255, 0, 0.3);
 			}
 
+			/* Mobile Filter Toggle Button */
+			.mobile-filter-toggle {
+				display: none; /* Hidden on desktop */
+				width: 100%;
+				padding: 1rem;
+				background: rgba(0, 246, 255, 0.1);
+				border: 1px solid var(--neon-blue);
+				border-left: none;
+				border-right: none;
+				color: var(--neon-blue);
+				font-family: 'Courier New', monospace;
+				font-size: 0.9rem;
+				font-weight: bold;
+				cursor: pointer;
+				text-align: center;
+				transition: all 0.3s ease;
+				text-shadow: 0 0 5px var(--neon-blue);
+			}
+
+			.mobile-filter-toggle:hover {
+				background: rgba(0, 246, 255, 0.2);
+			}
+
+			.toggle-icon {
+				display: inline-block;
+				transition: transform 0.3s ease;
+			}
+
+			.mobile-filter-toggle.active .toggle-icon {
+				transform: rotate(180deg);
+			}
+
 			/* Filter Controls */
 			.filter-controls {
 				padding: 2rem;
@@ -541,6 +573,17 @@ const allTags = Array.from(
 				}
 			}
 
+			/* Desktop - ensure filters are always visible */
+			@media (min-width: 769px) {
+				.mobile-filter-toggle {
+					display: none !important;
+				}
+
+				.filter-controls {
+					display: block !important;
+				}
+			}
+
 			/* Mobile Responsive */
 			@media (max-width: 768px) {
 				main {
@@ -591,17 +634,25 @@ const allTags = Array.from(
 					font-size: 0.85rem;
 				}
 
-				/* Mobile filter controls */
-				.filter-controls {
-					padding: 1rem 1.5rem;
-				}
+			/* Show mobile filter toggle on tablets and smaller */
+			.mobile-filter-toggle {
+				display: block;
+			}
 
-				.filter-buttons {
-					gap: 0.5rem;
-					flex-wrap: wrap;
-				}
+			/* Mobile filter controls - hidden by default, shown when toggled */
+			.filter-controls {
+				padding: 1rem 1.5rem;
+				display: none; /* Hidden by default on mobile */
+			}
 
-				.filter-btn {
+			.filter-controls.show {
+				display: block; /* Show when toggle is active */
+			}
+
+			.filter-buttons {
+				gap: 0.5rem;
+				flex-wrap: wrap;
+			}				.filter-btn {
 					font-size: 0.75rem;
 					padding: 0.4rem 0.8rem;
 					flex: 1;
@@ -698,8 +749,13 @@ const allTags = Array.from(
 					<div class="post-count"><span id="post-count">{posts.length}</span> posts found</div>
 				</div>
 
+				<!-- Mobile Filter Toggle Button -->
+				<button id="mobile-filter-toggle" class="mobile-filter-toggle">
+					<span class="toggle-icon">▼</span> Filters & Search
+				</button>
+
 				<!-- Filter Controls -->
-				<div class="filter-controls">
+				<div class="filter-controls" id="filter-controls">
 					<div class="search-container">
 						<input 
 							type="text" 
@@ -800,6 +856,17 @@ const allTags = Array.from(
 				if (!searchInput || !postsGrid || !postCount || !sortSelect) return;
 				
 				const allPosts = Array.from(postsGrid.children) as HTMLElement[];
+
+				// Mobile filter toggle functionality
+				const mobileFilterToggle = document.getElementById('mobile-filter-toggle') as HTMLButtonElement;
+				const filterControls = document.getElementById('filter-controls') as HTMLElement;
+				
+				if (mobileFilterToggle && filterControls) {
+					mobileFilterToggle.addEventListener('click', function() {
+						this.classList.toggle('active');
+						filterControls.classList.toggle('show');
+					});
+				}
 
 				let currentFilter = 'all';
 				let currentSort = 'date-desc';

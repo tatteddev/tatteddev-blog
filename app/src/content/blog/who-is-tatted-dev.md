@@ -4,7 +4,7 @@ description: 'Welcome to my little corner of the internet. An introduction to wh
 pubDate: 'Sep 26 2025'
 heroImage: '../../assets/tatteddev.png'
 category: 'Projects'
-tags: ['introduction', 'personal', 'about', 'indie-dev']
+tags: ['personal', 'indie-dev']
 ---
 
 Welcome to my little corner of the internet. You can call me Tatted Dev. This blog is where I'll share what I'm building, what I'm learning, and how I'm growing—not just as a developer, but as a creator, problem-solver, and someone obsessed with making cool things.
