@@ -71,7 +71,7 @@ const posts = (await getCollection('blog'))
 					
 					<!-- Skip Button -->
 					<button id="skip-init" class="skip-button" title="Skip initialization">
-						<span class="skip-icon">⏭</span> Skip
+						<span class="skip-icon"><span class="skip-arrow"></span><span class="skip-arrow"></span><span class="skip-bar"></span></span> Skip
 					</button>
 				</div>
 				<div class="terminal-body" id="terminal-body">
@@ -1563,7 +1563,25 @@ _connection_lost_
 	}
 
 	.skip-icon {
-		font-size: 14px;
+		display: flex;
+		align-items: center;
+		gap: 1px;
+	}
+
+	.skip-arrow {
+		width: 0;
+		height: 0;
+		border-top: 5px solid transparent;
+		border-bottom: 5px solid transparent;
+		border-left: 6px solid var(--neon-blue);
+		filter: drop-shadow(0 0 3px var(--neon-blue));
+	}
+
+	.skip-bar {
+		width: 2px;
+		height: 10px;
+		background: var(--neon-blue);
+		box-shadow: 0 0 5px var(--neon-blue);
 	}
 
 	.skip-button.hidden {
