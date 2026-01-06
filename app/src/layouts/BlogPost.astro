@@ -84,12 +84,15 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.hero-image {
 				margin: -2rem -2rem 2rem -2rem;
 				position: relative;
+				overflow: hidden;
+				background: linear-gradient(135deg, var(--surface), var(--bg-dark));
 			}
 
 			.hero-image img {
 				width: 100%;
-				height: 300px;
-				object-fit: cover;
+				max-height: 450px;
+				object-fit: contain;
+				object-position: center;
 				border-bottom: 1px solid var(--neon-blue);
 			}
 
@@ -522,7 +525,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<div class="blog-content">
 					{heroImage && (
 						<div class="hero-image">
-							<Image width={900} height={300} src={heroImage} alt={title} />
+							<Image width={1200} height={514} src={heroImage} alt={title} />
 						</div>
 					)}
 
