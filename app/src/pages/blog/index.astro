@@ -370,6 +370,8 @@ const allTags = Array.from(
 				justify-content: space-between;
 				align-items: flex-start;
 				width: 100%;
+				flex-wrap: wrap; /* Allow wrapping on very small screens */
+				gap: 0.25rem;
 			}
 
 			.post-date {
@@ -606,9 +608,15 @@ const allTags = Array.from(
 				}
 
 				.posts-grid {
-					grid-template-columns: 1fr;
-					gap: 1rem;
+					grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 					width: 100%;
+				}
+
+				.post-card-link {
+					/* On mobile/tablet, constrain height so cards don't get too tall */
+					aspect-ratio: 2/1; 
+					min-height: 220px;
+					max-height: 300px;
 				}
 
 
@@ -620,7 +628,7 @@ const allTags = Array.from(
 				}
 
 				.post-title {
-					font-size: 1rem;
+					font-size: 0.95rem; /* Revert to closer to desktop size */
 				}
 
 				.post-description {
