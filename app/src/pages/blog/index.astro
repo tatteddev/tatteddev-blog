@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
@@ -10,6 +10,22 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+// Pre-render an optimized, resized WebP for each card background.
+// Cards top out around 460px wide; render at 2x for retina. This turns the
+// raw multi-MB hero PNGs into ~40-80KB WebP per card instead of shipping the
+// full-size originals as CSS background-image.
+const cardBackgrounds = new Map<string, string>();
+for (const post of posts) {
+	if (!post.data.heroImage) continue;
+	const optimized = await getImage({
+		src: post.data.heroImage,
+		width: 900,
+		format: 'webp',
+		quality: 72,
+	});
+	cardBackgrounds.set(post.id, optimized.src);
+}
 
 // Aggregate unique tags for filter chips
 const allTags = Array.from(
@@ -807,9 +823,9 @@ const allTags = Array.from(
 									<a 
 										href={`/blog/${post.id}/`} 
 										class="post-card-link"
-										style={{ 
-											backgroundImage: post.data.heroImage ? `url(${post.data.heroImage.src})` : 'none',
-											backgroundColor: post.data.heroImage ? 'transparent' : 'rgba(10,10,15,0.8)'
+										style={{
+											backgroundImage: cardBackgrounds.has(post.id) ? `url(${cardBackgrounds.get(post.id)})` : 'none',
+											backgroundColor: cardBackgrounds.has(post.id) ? 'transparent' : 'rgba(10,10,15,0.8)'
 										}}
 									>
 										<div class="post-content">

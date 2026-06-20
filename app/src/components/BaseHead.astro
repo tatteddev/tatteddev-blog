@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/tatteddev.png';
 import { SITE_TITLE } from '../consts';
@@ -15,6 +16,18 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = FallbackImage } = Astro.props;
+
+// Render the social-card image at the declared 1200x630 as a compressed JPEG.
+// Raw hero PNGs run multiple MB; JPEG keeps it small and is universally
+// supported by social scrapers (unlike WebP/AVIF).
+const socialImage = await getImage({
+	src: image,
+	width: 1200,
+	height: 630,
+	format: 'jpeg',
+	quality: 80,
+});
+const socialImageURL = new URL(socialImage.src, Astro.url);
 ---
 
 <!-- Global Metadata -->
@@ -47,7 +60,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image.src, Astro.url)} />
+<meta property="og:image" content={socialImageURL} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content={title} />
@@ -57,5 +70,5 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+<meta property="twitter:image" content={socialImageURL} />
 <meta property="twitter:image:alt" content={title} />
