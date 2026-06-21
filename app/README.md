@@ -53,6 +53,29 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Cross-posting to DEV
+
+Publish the article on `tatteddev.com` first, then cross-post the live URL to DEV:
+
+```sh
+npm run crosspost:devto -- --url https://tatteddev.com/blog/example-post/
+```
+
+The command reads the matching local Markdown file from `src/content/blog`, fetches the live page metadata for the canonical URL and hero image, then creates or updates the DEV article using `DEVTO_API_KEY`.
+
+Useful options:
+
+```sh
+npm run crosspost:devto -- --url https://tatteddev.com/blog/example-post/ --dry-run
+npm run crosspost:devto -- --url https://tatteddev.com/blog/example-post/ --draft
+```
+
+The persistent Windows user environment variable should be:
+
+```powershell
+[Environment]::SetEnvironmentVariable("DEVTO_API_KEY", "your-key", "User")
+```
+
 ## 👀 Want to learn more?
 
 Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
