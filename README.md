@@ -4,18 +4,18 @@ Personal blog for TattedDev. Astro 5 static site in `app/`, served from Cloudfla
 ## Hosting
 
 - Worker name `tatteddev-blog`, configured in `app/wrangler.jsonc`. It serves `app/dist` as static assets with `not_found_handling: "404-page"` and custom domains `tatteddev.com` and `www.tatteddev.com`.
-- `.github/workflows/deploy.yml` builds on every pull request and builds then deploys on every push to `main` (and on manual dispatch). The deploy step needs a repository secret `CLOUDFLARE_API_TOKEN`: a Cloudflare API token made from the **Edit Cloudflare Workers** template, scoped to this account and the `tatteddev.com` zone. If the first deploy is refused while attaching the custom domains, add **Zone: DNS: Edit** for that zone to the token. The account id is committed in `wrangler.jsonc`, so no account secret is needed.
-- `npm run deploy` in `app/` builds and deploys from a machine logged in with `npx wrangler login`. Use it only for the first manual deploy or an emergency; the workflow is the normal path.
+- Cloudflare Workers Builds builds and deploys the Worker from this repository on every push to `main`, the same way olegnovoselskyy.com is deployed. There is no GitHub Actions workflow and no deploy secret in this repository; Cloudflare holds the GitHub connection.
+- `npm run deploy` in `app/` builds and deploys from a machine logged in with `npx wrangler login`. Use it only for an emergency; Workers Builds is the normal path.
 
 ## Cutover from Vercel
 
-Do these in order. Each step is safe to stop after; the site keeps serving from Vercel until step 3.
+Do these in order. The site keeps serving from Vercel until step 3.
 
-1. **Deploy the Worker.** Add the `CLOUDFLARE_API_TOKEN` secret, merge this change to `main`, and watch the "Build and deploy tatteddev.com" workflow finish. Alternatively run `npm run deploy` in `app/`. Wrangler creates the Worker and attaches the two custom domains. Custom-domain attachment needs the hostnames to be free of conflicting DNS records, so if the deploy fails on the route step, do step 2 first and rerun the deploy.
-2. **Move DNS in Cloudflare.** In the Cloudflare dashboard for the `tatteddev.com` zone, open DNS and delete the records that point at Vercel: the `A` record for `@` (`76.76.21.21`) and the `CNAME` for `www` (`cname.vercel-dns.com`), or whatever Vercel issued. Then open the Worker (Workers & Pages → `tatteddev-blog` → Settings → Domains & Routes) and confirm `tatteddev.com` and `www.tatteddev.com` show as active custom domains. Cloudflare manages the proxied DNS records and the certificate for custom domains itself. Check `https://tatteddev.com/`, `https://www.tatteddev.com/`, `https://tatteddev.com/rss.xml` and a missing path such as `https://tatteddev.com/nope` (expect a 404) once the records propagate.
-3. **Remove the project from Vercel.** In the Vercel dashboard, remove both domains from the project and then delete the project, so Vercel stops building the repository and the domains cannot flip back. Revoke the Vercel GitHub app's access to this repository if nothing else uses it.
+1. **Connect the repository to Workers Builds.** In the Cloudflare dashboard open Compute (Workers & Pages), choose Create, then Import a repository, and pick `tatteddev/tatteddev-blog`. Set root directory `app`, build command `npm run build`, deploy command `npx wrangler deploy`, production branch `main`, and turn preview builds off. Save and deploy. Workers Builds runs the build, then `wrangler deploy` creates the Worker from `app/wrangler.jsonc` and attaches the two custom domains. If the custom-domain step fails because of the existing Vercel records, do step 2 first and retry the deployment.
+2. **Confirm the custom domains.** Open the Worker (Compute → `tatteddev-blog` → Settings → Domains & Routes) and wait until `tatteddev.com` and `www.tatteddev.com` show as active. Cloudflare manages the proxied DNS records and the certificate for custom domains itself.
+3. **Move DNS off Vercel and remove the Vercel project.** In the `tatteddev.com` zone, open the DNS tab and delete the old Vercel records: the `A` record for `@` (`76.76.21.21`) and the `CNAME` for `www` (`cname.vercel-dns.com`), or whatever Vercel issued. Then in the Vercel dashboard remove both domains from the project and delete the project, so Vercel stops building the repository and the domains cannot flip back. Check `https://tatteddev.com/`, `https://www.tatteddev.com/`, `https://tatteddev.com/rss.xml` and a missing path such as `https://tatteddev.com/nope` (expect a 404).
 
-Rollback before step 3: recreate the Vercel `A` and `CNAME` records and detach the custom domains from the Worker. After step 3, rollback means redeploying to Vercel from the repository.
+Rollback before step 3: detach the custom domains from the Worker and the Vercel records take over again. After step 3, rollback means recreating the Vercel project and its `A` and `CNAME` records.
 
 ## Known gaps
 
