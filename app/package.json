@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy": "astro build && wrangler deploy",
     "astro": "astro",
     "crosspost:devto": "node scripts/publish-devto.mjs"
   },
@@ -20,6 +21,7 @@
     "@tailwindcss/postcss": "^4.1.13",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^4.1.13",
+    "wrangler": "^4.151.1"
   }
 }
