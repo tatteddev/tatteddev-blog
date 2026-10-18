@@ -1,0 +1,136 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Page not found - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<meta name="robots" content="noindex" />
+		<style>
+			body {
+				color: var(--neutral-light);
+				font-family: "Atkinson", sans-serif;
+			}
+
+			main {
+				max-width: 720px;
+				margin: 0 auto;
+				padding: 4rem 1rem;
+				width: 100%;
+			}
+
+			.terminal-window {
+				background: rgba(26, 27, 46, 0.95);
+				border: 1px solid var(--neon-blue);
+				border-radius: 8px;
+				box-shadow:
+					0 0 20px rgba(0, 246, 255, 0.1),
+					inset 0 0 20px rgba(0, 246, 255, 0.05);
+				overflow: hidden;
+			}
+
+			.terminal-header {
+				background: linear-gradient(135deg, var(--surface), var(--bg-dark));
+				padding: 0.75rem 1rem;
+				border-bottom: 1px solid var(--neon-blue);
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+
+			.terminal-controls {
+				display: flex;
+				gap: 0.5rem;
+			}
+
+			.control {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+			}
+
+			.control.close { background: #ff5f56; }
+			.control.minimize { background: #ffbd2e; }
+			.control.maximize { background: #27ca3f; }
+
+			.terminal-title {
+				margin-left: 1rem;
+				font-family: 'Courier New', monospace;
+				font-size: 0.9rem;
+				color: var(--neutral-mid);
+			}
+
+			.terminal-body {
+				padding: 1.5rem;
+				font-family: 'Courier New', monospace;
+				line-height: 1.8;
+			}
+
+			.prompt {
+				color: var(--accent-lime);
+			}
+
+			.error-code {
+				font-size: 3rem;
+				font-weight: 700;
+				margin: 1rem 0 0.5rem;
+				color: var(--neon-pink);
+				text-shadow: 0 0 20px rgba(255, 0, 212, 0.6);
+			}
+
+			h1 {
+				font-size: 1.5rem;
+				margin: 0 0 1rem;
+				color: var(--neon-blue);
+			}
+
+			p {
+				margin: 0 0 1.5rem;
+				color: var(--neutral-mid);
+			}
+
+			.home-link {
+				display: inline-block;
+				padding: 0.6rem 1.2rem;
+				border: 1px solid var(--neon-blue);
+				border-radius: 4px;
+				color: var(--neon-blue);
+				text-decoration: none;
+				transition: background 0.2s, color 0.2s;
+			}
+
+			.home-link:hover,
+			.home-link:focus-visible {
+				background: var(--neon-blue);
+				color: var(--bg-dark);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="terminal-window">
+				<div class="terminal-header">
+					<div class="terminal-controls">
+						<span class="control close"></span>
+						<span class="control minimize"></span>
+						<span class="control maximize"></span>
+					</div>
+					<div class="terminal-title">tatteddev@remote:~$ cat requested-page</div>
+				</div>
+				<div class="terminal-body">
+					<div><span class="prompt">$</span> cat requested-page</div>
+					<div class="error-code">404</div>
+					<h1>Page not found</h1>
+					<p>No such file or directory. The page you asked for has moved or never existed.</p>
+					<a class="home-link" href="/">Back to home</a>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
