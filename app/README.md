@@ -54,6 +54,17 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Runtime and security dependencies
+
+Use Node.js 24.21.0 (pinned in `.node-version` for Cloudflare Workers Builds).
+Astro 7 requires Node.js 22.23.4 or newer. Install the committed dependency tree
+with `npm ci`, then run `npm run build` and `npm audit` before publishing.
+
+The scoped `miniflare` override selects patched Undici 7.30.1 or newer within
+major version 7. Wrangler 4.152.0's Miniflare dependency otherwise resolves to
+vulnerable Undici 7.29.1. Remove the override once the upstream dependency
+selects a patched version itself; do not downgrade Wrangler to clear the audit.
+
 ## Cross-posting to DEV
 
 Publish the article on `tatteddev.com` first, then cross-post the live URL to DEV:

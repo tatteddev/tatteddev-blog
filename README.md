@@ -1,5 +1,5 @@
 # tatteddev-blog
-Personal blog for TattedDev. Astro 5 static site in `app/`, served from Cloudflare Workers static assets.
+Personal blog for TattedDev. Astro 7 static site in `app/`, served from Cloudflare Workers static assets.
 
 ## Hosting
 
