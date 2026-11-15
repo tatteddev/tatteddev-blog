@@ -2,6 +2,7 @@
 title: 'I Asked Codex to Show Me Every Possible Avatar'
 description: 'I asked Codex to preview every Pocket Quests avatar. The number came back in the millions, and I still had to figure out what to look at.'
 pubDate: 'Nov 15 2026'
+heroImage: '../../assets/pocket-quests-avatar-cover.webp'
 category: 'Development'
 tags: ['gamedev', 'ai', 'devjournal']
 ---
